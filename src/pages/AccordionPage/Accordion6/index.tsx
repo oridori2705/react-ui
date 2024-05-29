@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import data from '../data'
 import {
   AccordionContainer,
-  AccordionDescription,
   AccordionItemLi,
   AccordionTab
 } from './Accordion.styled'
