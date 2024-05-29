@@ -7,6 +7,7 @@ import RootLayout from '../components/RootLayout'
 import TabMenuPage from '../pages/TabMenuPage'
 import Accordion1 from '../pages/AccordionPage/Accordion1'
 import Accordion3 from '../pages/AccordionPage/Accordion3'
+import Accordion4V from '../pages/AccordionPage/Accordion4_v'
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
         element: <Accordion3 />
       },
       {
+        path: '/accordion/4_v',
+        element: <Accordion4V />
+      },
+      {
         path: '/tab-menu',
         element: <TabMenuPage />
       }
@@ -43,6 +48,7 @@ export const routePaths = [
   '/accordion/1_r',
   '/accordion/2_r',
   '/accordion/3_r',
+  '/accordion/4_v',
   '/tab-menu'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
@@ -72,7 +78,12 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: '/accordion',
     link: '/accordion/1_r',
     name: '01. 아코디언',
-    children: ['/accordion/1_r', '/accordion/2_r', '/accordion/3_r']
+    children: [
+      '/accordion/1_r',
+      '/accordion/2_r',
+      '/accordion/3_r',
+      '/accordion/4_v'
+    ]
   },
   '/accordion/1_r': {
     key: '/accordion/1_r',
@@ -91,6 +102,12 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     link: '/accordion/3_r',
     name: '리액트 아코디언 세 번째 방법',
     children: Accordion3
+  },
+  '/accordion/4_v': {
+    key: '/accordion/4_v',
+    link: '/accordion/4_v',
+    name: '리액트 아코디언 네 번째 방법 - Vanilla',
+    children: Accordion4V
   },
   '/tab-menu': {
     key: '/tab-menu',
