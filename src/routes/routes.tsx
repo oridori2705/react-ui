@@ -1,11 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom'
 
-import Accordion1 from '../pages/AccordionPage/Accordion1'
 import Accordion2 from '../pages/AccordionPage/Accordion2'
-import Accordion3 from '../pages/AccordionPage/Accordion3'
+
 import MainPage from '../pages/MainPage'
 import RootLayout from '../components/RootLayout'
 import TabMenuPage from '../pages/TabMenuPage'
+import Accordion1 from '../pages/AccordionPage/Accordion1'
+import Accordion3 from '../pages/AccordionPage/Accordion3'
 
 export const router = createBrowserRouter([
   {
