@@ -41,7 +41,7 @@ const Accordion7 = () => {
     <>
       <h3>
         #6. React
-        <sub>details태그를 이용한 아코디언 (transition효과는 추후 구현)</sub>
+        <sub>details,summary 태그를 이용한 아코디언</sub>
       </h3>
       <AccordionContainer>
         {data.map((d, i) => (

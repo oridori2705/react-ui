@@ -8,20 +8,32 @@ export const AccordionContainer = styled.ul`
   list-style: none;
   width: 100%;
 
+  details {
+    transition: max-height 3s ease;
+    overflow: hidden;
+  }
+
+  details:not([open]) {
+    transition: max-height 3s ease;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    height: 50px;
+    max-height: 50px;
+  }
+
+  details[open] {
+    transition: max-height 3s ease;
+    max-height: 100vh;
+  }
+
+  details:not([open]) summary {
+    cursor: pointer;
+  }
+
   details[open] summary {
     background-color: #ace;
     padding: 15px;
     border-bottom-width: 0;
-  }
-
-  details[open] .description {
-    padding: 15px;
-    border-bottom-width: 0;
-  }
-
-  summary {
-    padding: 15px;
-    border-bottom: 1px solid #ccc;
     cursor: pointer;
   }
 
