@@ -17,7 +17,7 @@ const VanillaWrapper = ({
       initiator(wrapper.current)
       isInit.current = true
     }
-  })
+  }, [initiator])
 
   return (
     <>

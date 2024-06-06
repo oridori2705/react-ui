@@ -6,7 +6,7 @@ import { SidebarContainer } from './components/SideBarContainer'
 
 const Gnb = () => {
   const { pathname } = useLocation()
-  console.log(pathname)
+
   return (
     <SidebarContainer>
       <h1>
