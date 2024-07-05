@@ -11,6 +11,11 @@ export const AccordionContainer = styled.ul`
   details {
     transition: max-height 3s ease;
     overflow: hidden;
+    & summary{
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
 
   details:not([open]) {
