@@ -1,0 +1,36 @@
+.container {
+  border: 1px solid #ccc;
+}
+.tabList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  border-bottom: 1px solid #ccc;
+}
+.tab {
+  flex: 1;
+  box-sizing: border-box;
+  padding: 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.tab + .tab {
+  border-left: 1px solid #ccc;
+}
+.tab.current {
+  background-color: #bde;
+}
+.description {
+  padding: 15px;
+}
+.tabMenu2 .description {
+  display: none;
+}
+.tabMenu2 .description.current {
+  display: block;
+}
