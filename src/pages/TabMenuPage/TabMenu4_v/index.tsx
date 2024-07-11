@@ -1,6 +1,9 @@
 import data from '../data'
 import VanillaWrapper from '../../../components/VanillaWrapper'
 import './TabMenu4_v.css'
+import UiExplanation from '../../../components/UiExplanation'
+import { Link } from 'react-router-dom'
+import { LinkTagStyle } from '../TabMenu5/TabMenu5.styled'
 
 const buildTabMenus = ({ id, title }: { id: string; title: string }) => {
   const $li = document.createElement('li')
@@ -11,7 +14,6 @@ const buildTabMenus = ({ id, title }: { id: string; title: string }) => {
 }
 
 const buildDescriptions = ({
-  id,
   description
 }: {
   id: string
@@ -55,10 +57,30 @@ const initiator = (wrapper: HTMLDivElement) => {
 }
 
 const TabMenu4V = () => (
-  <VanillaWrapper
-    title="#4"
-    initiator={initiator}
-  />
+  <>
+    <VanillaWrapper
+      title="#4"
+      initiator={initiator}
+    />
+    <UiExplanation>
+      <p>- VanillaJS만을 사용해서 탭 메뉴를 구현해봤습니다.</p>
+      <p>
+        - currentId를 let으로 관리해서 클릭 이벤트를 통해 각 탭 아이템을
+        toggle해서 선택되는 스타일을 가진 class를 추가하도록 했습니다.
+      </p>
+      <p>
+        - 구조는 container 엘리먼트와, tabList 엘리먼트로 구성하고, tabUl 요소에
+        tab Title 데이터를 나열하고, container요소에 tabUl과 description
+        요소들을 나열하게 했습니다.
+      </p>
+      <p>
+        - 즉,
+        <Link to="/tab-menu/2_r">
+          <LinkTagStyle>구조는 탭 메뉴 두 번째 방법</LinkTagStyle>과 같습니다.
+        </Link>
+      </p>
+    </UiExplanation>
+  </>
 )
 
 export default TabMenu4V

@@ -8,7 +8,7 @@ const TabItem = ({
   id,
   title,
   current,
-  toggle,
+  toggle
 }: {
   id: string
   title: string
@@ -16,7 +16,10 @@ const TabItem = ({
   toggle: () => void
 }) => {
   return (
-    <TabLi current={current} key={id} onClick={toggle}>
+    <TabLi
+      current={current}
+      key={id}
+      onClick={toggle}>
       {title}
     </TabLi>
   )
@@ -29,7 +32,7 @@ const TabMenu1 = () => {
     setCurrentId(id)
   }
   const currentDescription =
-    data.find((item) => item.id === currentId)?.description || ''
+    data.find(item => item.id === currentId)?.description || ''
 
   return (
     <>
@@ -38,7 +41,7 @@ const TabMenu1 = () => {
       </h3>
       <TabContainer>
         <TabUl>
-          {data.map((d) => (
+          {data.map(d => (
             <TabItem
               {...d}
               key={d.id}
@@ -49,11 +52,23 @@ const TabMenu1 = () => {
         </TabUl>
         <TabDescription>{currentDescription}</TabDescription>
       </TabContainer>
-        <UiExplanation>
-            <p>탭 메뉴의 데이터에서 Title 부분만 나열하고, 내부 description 부분은 클릭한 요소만 출력되게 했습니다.</p>
-            <p>그래서 <StyledStrongNegative>현재 DOM요소에도 클릭한 요소만 존재</StyledStrongNegative>하고 있습니다.</p>
-            <p>이는 웹 접근성과 ctrl+f로 데이터를 찾을 때 좋지 않을 것이라고 개인적으로 판단했습니다.</p>
-        </UiExplanation>
+      <UiExplanation>
+        <p>
+          -탭 메뉴의 데이터에서 Title 부분만 나열하고, 내부 description 부분은
+          클릭한 요소만 출력되게 했습니다.
+        </p>
+        <p>
+          -그래서{' '}
+          <StyledStrongNegative>
+            현재 DOM요소에도 클릭한 요소만 존재
+          </StyledStrongNegative>
+          하고 있습니다.
+        </p>
+        <p>
+          -이는 웹 접근성과 ctrl+f로 데이터를 찾을 때 좋지 않을 것이라고
+          개인적으로 판단했습니다.
+        </p>
+      </UiExplanation>
     </>
   )
 }

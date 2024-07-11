@@ -10,7 +10,7 @@ export const TabMenu3Ul = styled.ul`
   background-color: #e8f5e9;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 30px;
-  margin-bottom: 100px;
+  margin-bottom: 200px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   border: 1px solid #dcdcdc;
