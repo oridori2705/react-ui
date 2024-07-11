@@ -15,6 +15,7 @@ import TabMenu2 from '../pages/TabMenuPage/TabMenu2'
 import TabMenu3 from '../pages/TabMenuPage/TabMenu3'
 import TabMenu4V from '../pages/TabMenuPage/TabMenu4_v'
 import TabMenu5 from '../pages/TabMenuPage/TabMenu5'
+import TabMenu6 from '../pages/TabMenuPage/TabMenu6'
 
 export const router = createBrowserRouter([
   {
@@ -72,6 +73,10 @@ export const router = createBrowserRouter([
       {
         path: '/tab-menu/5_r',
         element: <TabMenu5 />
+      },
+      {
+        path: '/tab-menu/6_r',
+        element: <TabMenu6 />
       }
     ]
   }
@@ -92,7 +97,8 @@ export const routePaths = [
   '/tab-menu/2_r',
   '/tab-menu/3_r',
   '/tab-menu/4_v',
-  '/tab-menu/5_r'
+  '/tab-menu/5_r',
+  '/tab-menu/6_r'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -182,7 +188,8 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
       '/tab-menu/2_r',
       '/tab-menu/3_r',
       '/tab-menu/4_v',
-      '/tab-menu/5_r'
+      '/tab-menu/5_r',
+      '/tab-menu/6_r'
     ]
   },
   '/tab-menu/1_r': {
@@ -214,6 +221,12 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     link: '/tab-menu/5_r',
     name: '탭 메뉴 다섯 번째 방법',
     children: TabMenu5
+  },
+  '/tab-menu/6_r': {
+    key: '/tab-menu/6_r',
+    link: '/tab-menu/6_r',
+    name: '탭 메뉴 여섯 번째 방법',
+    children: TabMenu6
   }
 }
 
