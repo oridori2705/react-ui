@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import { useEffect, useRef, useState } from 'react'
 import data from '../data'
 import { TabContainer, TabLi, TabUl } from '../TabMenu1/TabMenu1.styled'

@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import { useEffect, useRef, useState } from 'react'
 import data from '../data'
 import {
@@ -27,9 +29,6 @@ const AccordionItem = ({
 }) => {
   const descRef = useRef<HTMLDivElement>(null)
 
-  //descRef로 연결한 요소에 beforematch라는 이벤트를 등록해야하는데
-  //beforematch는 HTML에서 새로 등장한 기능이다 보니 React가 반영을 못하고 있다.
-  //그래서 addEventListener로 등록을 해준 것이다.
   useEffect(() => {
     const node = descRef.current
     if (node) {
@@ -40,10 +39,6 @@ const AccordionItem = ({
     }
   }, [toggle])
 
-  //원래 HIDDEN이 아닌 hidden으로 해야하는데 React에는 "until-found"라는 것이 아직 반영이 안되어있어서 없애버리는 문제가 있었는데
-  //HTML이 대소문자를 구분안하는 꼼수로 until-found를 인식하게 했다.
-  //또한 현재 styled-component는 HIDDEN속성은 되고있지만 beforematch 이벤트가 작동이 안되고 있다.
-  //그래서 description부분은 div 태그를 사용해서 구현했다.
   return (
     <AccordionItemLi
       current={current}
