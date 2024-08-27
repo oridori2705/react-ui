@@ -17,6 +17,7 @@ import TabMenu4V from '../pages/TabMenuPage/TabMenu4_v'
 import TabMenu5 from '../pages/TabMenuPage/TabMenu5'
 import TabMenu6 from '../pages/TabMenuPage/TabMenu6'
 import Tooltip1 from '../pages/TooltipPage/Tooltip1'
+import Tooltip2 from '../pages/TooltipPage/Tooltip2'
 
 export const router = createBrowserRouter([
   {
@@ -82,6 +83,10 @@ export const router = createBrowserRouter([
       {
         path: '/tooltip/1_r',
         element: <Tooltip1 />
+      },
+      {
+        path: '/tooltip/2_r',
+        element: <Tooltip2 />
       }
     ]
   }
@@ -105,7 +110,8 @@ export const routePaths = [
   '/tab-menu/5_r',
   '/tab-menu/6_r',
   '/tooltip',
-  '/tooltip/1_r'
+  '/tooltip/1_r',
+  '/tooltip/2_r'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -239,12 +245,18 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: '/tooltip',
     link: '/tooltip/1_r',
     name: '03. 툴팁',
-    children: ['/tooltip/1_r']
+    children: ['/tooltip/1_r', '/tooltip/2_r']
   },
   '/tooltip/1_r': {
     key: '/tooltip/1_r',
     link: '/tooltip/1_r',
     name: '툴팁 첫 번째 방법',
+    children: Tooltip1
+  },
+  '/tooltip/2_r': {
+    key: '/tooltip/2_r',
+    link: '/tooltip/2_r',
+    name: '툴팁 두 번째 방법',
     children: Tooltip1
   }
 }
