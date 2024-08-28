@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import UiExplanation from '../../../components/UiExplanation'
 import { StyledCode } from '../../../components/UiExplanation/UiExplanation.styled'
-import Tooltip from './TooltipWrapper'
+import Tooltip from './TooltipComponent1'
 
 const Tooltip1 = () => {
   return (
@@ -41,30 +41,25 @@ const Tooltip1 = () => {
           - 어떤 요소에든 Tooltip을 사용할 수 있는 Tooltip 컴포넌트를
           구현했습니다.
         </p>
+        <p>- 아래와 같은 속성을 지정해주어야 합니다.</p>
         <p>
-          - 아래와 같은 속성을 지정해주어야 합니다.
-          <p>
-            -<StyledCode> arrow : 화살표 유무 [기본값 true]</StyledCode>
-          </p>
-          <p>
-            -
-            <StyledCode>
-              direction : tooltip의 위치 top | left | right | bottom 중 선택
-              가능 [기본값 top]
-            </StyledCode>
-          </p>
-          <p>
-            -
-            <StyledCode>
-              eventType : click | hover | focus 중 선택 가능 [기본값 hover]
-            </StyledCode>
-          </p>
-          <p>
-            -
-            <StyledCode>
-              tooltipText : tooltip에 나타내고 싶은 텍스트
-            </StyledCode>
-          </p>
+          -<StyledCode> arrow : 화살표 유무 [기본값 true]</StyledCode>
+        </p>
+        <p>
+          -
+          <StyledCode>
+            direction : tooltip의 위치 top | left | right | bottom 중 선택 가능
+            [기본값 top]
+          </StyledCode>
+        </p>
+        <p>
+          -
+          <StyledCode>
+            eventType : click | hover | focus 중 선택 가능 [기본값 hover]
+          </StyledCode>
+        </p>
+        <p>
+          -<StyledCode>tooltipText : tooltip에 나타내고 싶은 텍스트</StyledCode>
         </p>
       </UiExplanation>
     </>
