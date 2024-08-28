@@ -1,5 +1,5 @@
 import { FocusEvent, MouseEvent, useEffect, useState } from 'react'
-import { Props } from './types'
+import { TooltipProps } from './types'
 import { TooltipWrapper, TooltipContent } from './Tooltip1.styled'
 
 const Tooltip = ({
@@ -7,8 +7,8 @@ const Tooltip = ({
   direction = 'top',
   arrow = true,
   eventType = 'hover',
-  tooltipText
-}: Props) => {
+  tooltipContent
+}: TooltipProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const changeIsOpen = (
@@ -49,7 +49,7 @@ const Tooltip = ({
           onClick={
             eventType === 'click' ? e => e.stopPropagation() : undefined
           }>
-          {tooltipText}
+          {tooltipContent}
         </TooltipContent>
       </TooltipWrapper>
     </div>

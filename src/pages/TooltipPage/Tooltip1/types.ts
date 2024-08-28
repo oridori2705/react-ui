@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
-export interface Props {
+export interface TooltipProps {
   children: React.ReactNode
   direction: 'top' | 'bottom' | 'left' | 'right'
   arrow: boolean
   eventType: 'hover' | 'focus' | 'click'
-  tooltipText: string
+  tooltipContent: string | ReactElement
 }
 export interface TooltipContentType {
   direction: 'top' | 'bottom' | 'left' | 'right'

@@ -1,5 +1,5 @@
 import { FocusEvent, MouseEvent, useEffect, useRef, useState } from 'react'
-import { Props } from '../Tooltip1/types'
+import { TooltipProps } from '../Tooltip1/types'
 import { TooltipContent, TooltipWrapper } from '../Tooltip1/Tooltip1.styled'
 import useStyleInView from '../../../hooks/viewport/useStyleInView'
 
@@ -8,8 +8,8 @@ const Tooltip = ({
   direction = 'top',
   arrow = true,
   eventType = 'hover',
-  tooltipText
-}: Props) => {
+  tooltipContent
+}: TooltipProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const targetRef = useRef<HTMLDivElement>(null)
   const viewportDirection = useStyleInView(wrapperRef, targetRef, direction)
@@ -55,7 +55,7 @@ const Tooltip = ({
           onClick={
             eventType === 'click' ? e => e.stopPropagation() : undefined
           }>
-          {tooltipText}
+          {tooltipContent}
         </TooltipContent>
       </TooltipWrapper>
     </div>

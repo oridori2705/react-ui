@@ -22,7 +22,7 @@ const Tooltip2 = () => {
             arrow={false}
             eventType="focus"
             direction="right"
-            tooltipText="마음껏 입력해보세요!">
+            tooltipContent="마음껏 입력해보세요!">
             <StyledInput
               type="text"
               placeholder="입력하세요."
@@ -32,14 +32,18 @@ const Tooltip2 = () => {
             arrow={true}
             eventType="hover"
             direction="right"
-            tooltipText="Hello😁">
+            tooltipContent="Hello😁">
             <StyledButton className="primary">hover me</StyledButton>
           </Tooltip>
           <Tooltip
             arrow={true}
             eventType="click"
             direction="bottom"
-            tooltipText="Hello😁">
+            tooltipContent={
+              <div>
+                <StyledButton className="primary">Hello😁</StyledButton>
+              </div>
+            }>
             <StyledButton className="success">click me</StyledButton>
           </Tooltip>
         </Container>
