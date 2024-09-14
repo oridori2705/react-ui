@@ -64,4 +64,5 @@ export const BubbleContainer = styled.div`
 export const BubbleText = styled.p`
   margin: 0;
   color: #333;
+  white-space: pre-wrap;
 `
