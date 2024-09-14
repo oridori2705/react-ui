@@ -33,11 +33,11 @@ const TextBox3 = () => {
           Math.floor(cloneElem.scrollHeight / cloneElem.clientHeight),
           3
         ),
-        10
+        6
       ))
       elem.rows = newRows
 
-      const overflowStyle = newRows >= 10 ? 'auto' : 'hidden'
+      const overflowStyle = newRows >= 6 ? 'auto' : 'hidden'
       elem.style.overflow = overflowStyle
       cloneElem.style.overflow = overflowStyle
     }

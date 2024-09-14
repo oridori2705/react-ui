@@ -11,14 +11,14 @@ import {
   TextareaContainer
 } from '../TextBox1/TextBox1.styled'
 
-interface TextBoxProps {
+interface Textarea4ComponentProps {
   minRow: number
   maxRow: number
   handleSubmit: () => void
 }
 
-const TextBoxComponent = forwardRef(
-  ({ minRow, maxRow, handleSubmit }: TextBoxProps, ref) => {
+const Textarea4Component = forwardRef(
+  ({ minRow, maxRow, handleSubmit }: Textarea4ComponentProps, ref) => {
     const textareaRef = useRef<HTMLTextAreaElement>(null)
     const cloneRef = useRef<HTMLTextAreaElement>(null)
 
@@ -96,6 +96,6 @@ const TextBoxComponent = forwardRef(
   }
 )
 
-TextBoxComponent.displayName = 'TextBoxComponent'
+Textarea4Component.displayName = 'Textarea4Component'
 
-export default TextBoxComponent
+export default Textarea4Component

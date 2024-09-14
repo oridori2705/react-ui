@@ -16,7 +16,7 @@ const TextBox2 = () => {
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const elem = e.target
     const val = elem.value
-    const lines = Math.min(Math.max(measureLines(elem, val), 3), 15)
+    const lines = Math.min(Math.max(measureLines(elem, val), 3), 6)
     elem.rows = lines
   }
 

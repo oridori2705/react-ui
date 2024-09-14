@@ -1,6 +1,4 @@
 import { useRef, useState } from 'react'
-import TextBoxComponent from './TextBoxComponent'
-
 import {
   BubbleContainer,
   BubbleText,
@@ -13,6 +11,7 @@ import {
   StyledCode,
   StyledStrong
 } from '../../../components/UiExplanation/UiExplanation.styled'
+import Textarea4Component from './Textarea4Component'
 
 const TextBox4 = () => {
   const ref = useRef<{ getValue: () => string }>(null)
@@ -37,7 +36,7 @@ const TextBox4 = () => {
           </BubbleContainer>
         )}
         <TextInputContainer>
-          <TextBoxComponent
+          <Textarea4Component
             minRow={3}
             maxRow={10}
             ref={ref}
