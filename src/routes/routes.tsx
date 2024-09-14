@@ -18,6 +18,10 @@ import TabMenu5 from '../pages/TabMenuPage/TabMenu5'
 import TabMenu6 from '../pages/TabMenuPage/TabMenu6'
 import Tooltip1 from '../pages/TooltipPage/Tooltip1'
 import Tooltip2 from '../pages/TooltipPage/Tooltip2'
+import TextBox1 from '../pages/TextBoxPage/TextBox1'
+import TextBox2 from '../pages/TextBoxPage/TextBox2'
+import TextBox3 from '../pages/TextBoxPage/TextBox3'
+import TextBox4 from '../pages/TextBoxPage/TextBox4'
 
 export const router = createBrowserRouter([
   {
@@ -87,6 +91,22 @@ export const router = createBrowserRouter([
       {
         path: '/tooltip/2_r',
         element: <Tooltip2 />
+      },
+      {
+        path: '/text-box/1_r',
+        element: <TextBox1 />
+      },
+      {
+        path: '/text-box/2_r',
+        element: <TextBox2 />
+      },
+      {
+        path: '/text-box/3_r',
+        element: <TextBox3 />
+      },
+      {
+        path: '/text-box/4_r',
+        element: <TextBox4 />
       }
     ]
   }
@@ -111,7 +131,12 @@ export const routePaths = [
   '/tab-menu/6_r',
   '/tooltip',
   '/tooltip/1_r',
-  '/tooltip/2_r'
+  '/tooltip/2_r',
+  '/text-box',
+  '/text-box/1_r',
+  '/text-box/2_r',
+  '/text-box/3_r',
+  '/text-box/4_r'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -134,7 +159,7 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: '/',
     link: '/',
     name: 'root',
-    children: ['/accordion', '/tab-menu', '/tooltip']
+    children: ['/accordion', '/tab-menu', '/tooltip', '/text-box']
   },
   '/accordion': {
     key: '/accordion',
@@ -258,6 +283,41 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     link: '/tooltip/2_r',
     name: '툴팁 두 번째 방법',
     children: Tooltip1
+  },
+  '/text-box': {
+    key: '/text-box',
+    link: '/text-box/1_r',
+    name: '03. 텍스트박스',
+    children: [
+      '/text-box/1_r',
+      '/text-box/2_r',
+      '/text-box/3_r',
+      '/text-box/4_r'
+    ]
+  },
+  '/text-box/1_r': {
+    key: '/text-box/1_r',
+    link: '/text-box/1_r',
+    name: '텍스트박스 첫 번째 방법',
+    children: TextBox1
+  },
+  '/text-box/2_r': {
+    key: '/text-box/2_r',
+    link: '/text-box/2_r',
+    name: '텍스트박스 두 번째 방법',
+    children: TextBox2
+  },
+  '/text-box/3_r': {
+    key: '/text-box/3_r',
+    link: '/text-box/3_r',
+    name: '텍스트박스 세 번째 방법',
+    children: TextBox3
+  },
+  '/text-box/4_r': {
+    key: '/text-box/4_r',
+    link: '/text-box/4_r',
+    name: '텍스트박스 네 번째 방법',
+    children: TextBox4
   }
 }
 
