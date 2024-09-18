@@ -34,11 +34,6 @@ const LineClampedClone = ({ text, lineToShow = 3 }: LineClampProps) => {
       <LineClampText
         fullHeight={fullHeight}
         isClamped={isClamped}
-        fontSize={
-          elemRef.current
-            ? parseFloat(getComputedStyle(elemRef.current).fontSize)
-            : 16
-        }
         ref={elemRef}
         lineToShow={lineToShow}>
         {text}

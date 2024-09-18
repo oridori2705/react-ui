@@ -1,10 +1,10 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
 interface LineClampTextProps {
   lineToShow: number
   isClamped: boolean
   fullHeight: number
-  fontSize: number
 }
 
 export const LineClampContainer = styled.div`
@@ -15,19 +15,21 @@ export const LineClampContainer = styled.div`
 
 export const LineClampText = styled.div<LineClampTextProps>`
   white-space: pre-line;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  height: ${({ isClamped, lineToShow, fullHeight, fontSize }) =>
+  height: ${({ isClamped, lineToShow, fullHeight }) =>
     isClamped
-      ? `${Math.min(lineToShow * 1.67 * fontSize, fullHeight)}px`
+      ? `min(calc(${lineToShow} * 1.67 * 1em), ${fullHeight}px)`
       : `${fullHeight}px`};
-
   transition: height 0.5s ease;
 
-  -webkit-line-clamp: ${({ isClamped, lineToShow }) =>
-    isClamped ? lineToShow : 'none'};
+  ${props =>
+    props.isClamped &&
+    css`
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: ${props.lineToShow};
+    `}
 `
 
 export const LineClampButtonMore = styled.button<{ isClamped: boolean }>`

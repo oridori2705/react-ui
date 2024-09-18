@@ -30,11 +30,6 @@ const LineClampCanvas = ({ text, lineToShow = 3 }: LineClampProps) => {
   return (
     <LineClampContainer>
       <LineClampText
-        fontSize={
-          elemRef.current
-            ? parseFloat(getComputedStyle(elemRef.current).fontSize)
-            : 16
-        }
         fullHeight={fullHeight}
         isClamped={isClamped}
         ref={elemRef}
