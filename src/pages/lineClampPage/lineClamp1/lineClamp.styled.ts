@@ -61,7 +61,6 @@ export const LineClampButtonMore = styled.button<{ isClamped: boolean }>`
 export const LineClampTextClone = styled.div`
   position: absolute;
   box-sizing: border-box;
-  line-height: inherit;
   left: 10px;
   top: 10px;
   white-space: pre-line;
