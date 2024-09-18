@@ -4,7 +4,7 @@ import {
   StyledTextarea,
   TextareaContainer
 } from '../TextBox1/TextBox1.styled'
-import { measureLines } from '../utils'
+import { measureLines } from '../../../utils'
 import UiExplanation from '../../../components/UiExplanation'
 import {
   StyledCode,

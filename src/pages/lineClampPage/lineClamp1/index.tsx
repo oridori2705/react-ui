@@ -28,4 +28,5 @@ export const TempContainer = styled.div`
   margin: 10px 0;
   padding: 10px;
   border: 1px solid #ccc;
+  line-height: 1.67; //자유롭게 수정해도 변화가 LineClamp에 적용됨
 `

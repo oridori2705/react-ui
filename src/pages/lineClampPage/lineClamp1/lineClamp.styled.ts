@@ -5,19 +5,20 @@ interface LineClampTextProps {
   lineToShow: number
   isClamped: boolean
   fullHeight: number
+  lineHeight: string
 }
 
 export const LineClampContainer = styled.div`
   position: relative;
   margin: 10px 0;
-  line-height: 1.67;
+  line-height: inherit;
 `
 
 export const LineClampText = styled.div<LineClampTextProps>`
   white-space: pre-line;
-  height: ${({ isClamped, lineToShow, fullHeight }) =>
+  height: ${({ isClamped, lineToShow, fullHeight, lineHeight }) =>
     isClamped
-      ? `min(calc(${lineToShow} * 1.67 * 1em), ${fullHeight}px)`
+      ? `min(calc(${lineToShow} * ${lineHeight} * 1em), ${fullHeight}px)`
       : `${fullHeight}px`};
   transition: height 0.5s ease;
 
@@ -60,6 +61,7 @@ export const LineClampButtonMore = styled.button<{ isClamped: boolean }>`
 export const LineClampTextClone = styled.div`
   position: absolute;
   box-sizing: border-box;
+  line-height: inherit;
   left: 10px;
   top: 10px;
   white-space: pre-line;
