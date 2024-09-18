@@ -13,7 +13,6 @@ const LineClamp1 = () => {
         <TempContainer key={i}>
           <LineClampCanvas
             text={text}
-            key={i}
             lineToShow={3}
           />
         </TempContainer>
