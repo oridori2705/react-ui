@@ -1,4 +1,4 @@
-import { RefObject, useRef } from 'react'
+import { RefObject } from 'react'
 
 export const measureLines = (elem: HTMLElement, val: string) => {
   if (!elem || !val) return 0
