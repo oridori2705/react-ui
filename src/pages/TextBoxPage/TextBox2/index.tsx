@@ -47,7 +47,7 @@ const TextBox2 = () => {
           - <StyledStrongPositive>canvas</StyledStrongPositive>를 이용했습니다.
         </p>
         <p>
-          - textarea의 <StyledCode>font-size</StyledCode>와 StyledCode
+          - textarea의 <StyledCode>font-size</StyledCode>와
           <StyledCode>font-family</StyledCode>를 가져와 canvas를 이용해 텍스트의
           크기를 즉정합니다.
         </p>
