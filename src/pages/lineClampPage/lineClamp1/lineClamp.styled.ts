@@ -21,11 +21,11 @@ export const LineClampText = styled.div<LineClampTextProps>`
       ? `min(calc(${lineToShow} * ${lineHeight} * 1em), ${fullHeight}px)`
       : `${fullHeight}px`};
   transition: height 0.5s ease;
+  overflow: hidden;
 
   ${props =>
     props.isClamped &&
     css`
-      overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-box-orient: vertical;
