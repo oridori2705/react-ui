@@ -49,7 +49,7 @@ const TextBox2 = () => {
         <p>
           - textarea의 <StyledCode>font-size</StyledCode>와
           <StyledCode>font-family</StyledCode>를 가져와 canvas를 이용해 텍스트의
-          크기를 즉정합니다.
+          크기를 측정합니다.
         </p>
         <p>
           - 입력한 데이터의 각 줄을 순회합니다. canvas의
