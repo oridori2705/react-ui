@@ -22,6 +22,8 @@ import TextBox1 from '../pages/TextBoxPage/TextBox1'
 import TextBox2 from '../pages/TextBoxPage/TextBox2'
 import TextBox3 from '../pages/TextBoxPage/TextBox3'
 import TextBox4 from '../pages/TextBoxPage/TextBox4'
+import LineClamp1 from '../pages/lineClampPage/lineClamp1'
+import LineClamp2 from '../pages/lineClampPage/lineClamp2'
 
 export const router = createBrowserRouter([
   {
@@ -107,6 +109,14 @@ export const router = createBrowserRouter([
       {
         path: '/text-box/4_r',
         element: <TextBox4 />
+      },
+      {
+        path: '/line-clamp/1_r',
+        element: <LineClamp1 />
+      },
+      {
+        path: '/line-clamp/2_r',
+        element: <LineClamp2 />
       }
     ]
   }
@@ -136,7 +146,10 @@ export const routePaths = [
   '/text-box/1_r',
   '/text-box/2_r',
   '/text-box/3_r',
-  '/text-box/4_r'
+  '/text-box/4_r',
+  '/line-clamp',
+  '/line-clamp/1_r',
+  '/line-clamp/2_r'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -159,7 +172,13 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: '/',
     link: '/',
     name: 'root',
-    children: ['/accordion', '/tab-menu', '/tooltip', '/text-box']
+    children: [
+      '/accordion',
+      '/tab-menu',
+      '/tooltip',
+      '/text-box',
+      '/line-clamp'
+    ]
   },
   '/accordion': {
     key: '/accordion',
@@ -318,6 +337,24 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     link: '/text-box/4_r',
     name: '텍스트박스 네 번째 방법',
     children: TextBox4
+  },
+  '/line-clamp': {
+    key: '/line-clamp',
+    link: '/line-clamp/1_r',
+    name: '04. 라인 클램프',
+    children: ['/line-clamp/1_r', '/line-clamp/2_r']
+  },
+  '/line-clamp/1_r': {
+    key: '/line-clamp/1_r',
+    link: '/line-clamp/1_r',
+    name: '라인클램프 첫 번째 방법',
+    children: LineClamp1
+  },
+  '/line-clamp/2_r': {
+    key: '/line-clamp/2_r',
+    link: '/line-clamp/2_r',
+    name: '라인클램프 두 번째 방법',
+    children: LineClamp2
   }
 }
 

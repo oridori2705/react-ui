@@ -4,7 +4,7 @@ import {
   StyledTextarea,
   TextareaContainer
 } from '../TextBox1/TextBox1.styled'
-import { measureLines } from '../utils'
+import { measureLines } from '../../../utils'
 import UiExplanation from '../../../components/UiExplanation'
 import {
   StyledCode,
@@ -47,9 +47,9 @@ const TextBox2 = () => {
           - <StyledStrongPositive>canvas</StyledStrongPositive>를 이용했습니다.
         </p>
         <p>
-          - textarea의 <StyledCode>font-size</StyledCode>와 StyledCode
+          - textarea의 <StyledCode>font-size</StyledCode>와
           <StyledCode>font-family</StyledCode>를 가져와 canvas를 이용해 텍스트의
-          크기를 즉정합니다.
+          크기를 측정합니다.
         </p>
         <p>
           - 입력한 데이터의 각 줄을 순회합니다. canvas의

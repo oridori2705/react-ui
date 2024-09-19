@@ -42,7 +42,7 @@ const TextBox3 = () => {
       cloneElem.style.overflow = overflowStyle
     }
 
-    if (elem) elem.addEventListener('input', updateTextarea)
+    if (elem) elem.addEventListener('input', updateTextarea) // onInput으로 해도 됨
 
     return () => {
       if (elem) elem.removeEventListener('input', updateTextarea)

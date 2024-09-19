@@ -18,7 +18,6 @@ export const StyledTextarea = styled.textarea`
 
 export const CloneTextarea = styled.textarea`
   position: absolute;
-
   box-sizing: border-box;
   width: calc(100% - 20px);
   margin: 0;
