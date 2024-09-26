@@ -1,6 +1,7 @@
 import { ComponentProps, useEffect, useRef, useState } from 'react'
 import useIntersectionObserver from '../hooks/useIntersectionObserver'
 import { ImageContent } from './LazyImage1.styled'
+import fallbackImage from '@/assets/images/fallbackImage.png'
 
 const ioOptions: IntersectionObserverInit = {
   threshold: 0
@@ -18,11 +19,11 @@ const LazyImageComponent1 = ({
 }: LazyImageComponentProps) => {
   const imgRef = useRef<HTMLImageElement>(null)
   const [loaded, setLoaded] = useState(false)
+  const [error, setError] = useState(false)
   const { entries, observerRef } = useIntersectionObserver(imgRef, ioOptions)
 
-  const onLoad = () => {
-    setLoaded(true)
-  }
+  const onLoad = () => setLoaded(true)
+  const onError = () => setError(true)
 
   useEffect(() => {
     if ('loading' in HTMLImageElement.prototype) {
@@ -46,7 +47,9 @@ const LazyImageComponent1 = ({
       width={width}
       height={height}
       onLoad={onLoad}
+      onError={onError}
       alt={alt}
+      src={error ? fallbackImage : src}
     />
   )
 }
