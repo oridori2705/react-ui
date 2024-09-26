@@ -40,16 +40,17 @@ const LazyImageComponent1 = ({
     }
   }, [src, entries, observerRef])
 
+  if (error) return <img src={fallbackImage} />
+
   return (
     <ImageContent
       load={loaded}
       ref={imgRef}
       width={width}
       height={height}
-      onLoad={onLoad}
       onError={onError}
+      onLoad={onLoad}
       alt={alt}
-      src={error ? fallbackImage : src}
     />
   )
 }

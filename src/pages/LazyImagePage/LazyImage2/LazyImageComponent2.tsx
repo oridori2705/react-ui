@@ -23,11 +23,9 @@ const Wrapper = ({
 
   return (
     <Container
-      style={{
-        backgroundImage: `url(${smallSizeUrl})`,
-        width: `${width}px`,
-        height: `${height}px`
-      }}>
+      url={smallSizeUrl}
+      width={width}
+      height={height}>
       {children}
     </Container>
   )
@@ -63,7 +61,6 @@ const LazyImageComponent2 = ({
       imgElement.setAttribute('src', src)
       observerRef.current?.disconnect()
     }
-
     return () => {
       imgElement.removeEventListener('load', onLoad)
     }
