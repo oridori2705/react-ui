@@ -1,5 +1,5 @@
 import data from '../data'
-import LazyImageComponent2 from './LazyImageComponent'
+import LazyImageComponent2 from './LazyImageComponent2'
 
 const LazyImage2 = () => {
   return (
