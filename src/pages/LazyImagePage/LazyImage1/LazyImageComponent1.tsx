@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { ComponentProps, useEffect, useRef, useState } from 'react'
 import useIntersectionObserver from '../hooks/useIntersectionObserver'
 import { ImageContent } from './LazyImage1.styled'
 
@@ -6,15 +6,16 @@ const ioOptions: IntersectionObserverInit = {
   threshold: 0
 }
 
+export interface LazyImageComponentProps extends ComponentProps<'img'> {
+  src: string
+}
+
 const LazyImageComponent1 = ({
   src,
-  width,
-  height
-}: {
-  src: string
-  width: number
-  height: number
-}) => {
+  width = 600,
+  height = 320,
+  alt = '이미지'
+}: LazyImageComponentProps) => {
   const imgRef = useRef<HTMLImageElement>(null)
   const [loaded, setLoaded] = useState(false)
   const { entries, observerRef } = useIntersectionObserver(imgRef, ioOptions)
@@ -45,7 +46,7 @@ const LazyImageComponent1 = ({
       width={width}
       height={height}
       onLoad={onLoad}
-      alt=""
+      alt={alt}
     />
   )
 }

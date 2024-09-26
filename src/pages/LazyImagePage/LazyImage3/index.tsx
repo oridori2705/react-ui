@@ -11,10 +11,10 @@ const LazyImage3 = () => {
         <sub>이미지에 blur transition 효과 적용 / 작은 이미지 제외</sub>
       </h3>
       <ImageContainer>
-        {data.map((url, index) => (
+        {data.map(url => (
           <LazyImageComponent3
             src={url}
-            key={index}
+            key={url}
             width={600}
             height={320}
           />

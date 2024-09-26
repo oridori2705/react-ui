@@ -4,7 +4,7 @@ type Elem = Element | null
 
 const useIntersectionObserver = (
   elemRef: RefObject<Elem>,
-  options: IntersectionObserverInit = { threshold: 0 }
+  options: IntersectionObserverInit = { threshold: 0.5 }
 ) => {
   const observerRef = useRef<IntersectionObserver>()
   const [entries, setEntries] = useState<IntersectionObserverEntry[]>([])

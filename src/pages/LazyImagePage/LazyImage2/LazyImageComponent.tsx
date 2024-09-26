@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
+import { ReactNode, useEffect, useRef, useState } from 'react'
 import useIntersectionObserver from '../hooks/useIntersectionObserver'
 import { Container } from './LazyImage2.styled'
 import { ImageContent2 } from './LazyImage2.styled'
+import { LazyImageComponentProps } from '../LazyImage1/LazyImageComponent1'
 
 const ioOptions: IntersectionObserverInit = {
   threshold: 0
@@ -14,9 +15,9 @@ const Wrapper = ({
   children
 }: {
   url: string
-  width: number
-  height: number
-  children: React.ReactNode
+  width: string | number
+  height: string | number
+  children: ReactNode
 }) => {
   const smallSizeUrl = url.replace('/600/320', '/60/32')
 
@@ -34,13 +35,10 @@ const Wrapper = ({
 
 const LazyImageComponent2 = ({
   src,
-  width,
-  height
-}: {
-  src: string
-  width: number
-  height: number
-}) => {
+  width = 600,
+  height = 320,
+  alt = '이미지'
+}: LazyImageComponentProps) => {
   const imgRef = useRef<HTMLImageElement>(null)
   const [loaded, setLoaded] = useState(false)
   const { entries, observerRef } = useIntersectionObserver(imgRef, ioOptions)
@@ -82,7 +80,7 @@ const LazyImageComponent2 = ({
         height={height}
         load={loaded}
         onLoad={onLoad}
-        alt=""
+        alt={alt}
       />
     </Wrapper>
   )
