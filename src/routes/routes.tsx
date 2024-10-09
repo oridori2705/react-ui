@@ -24,6 +24,9 @@ import TextBox3 from '../pages/TextBoxPage/TextBox3'
 import TextBox4 from '../pages/TextBoxPage/TextBox4'
 import LineClamp1 from '../pages/lineClampPage/lineClamp1'
 import LineClamp2 from '../pages/lineClampPage/lineClamp2'
+import LazyImage1 from '../pages/LazyImagePage/LazyImage1'
+import LazyImage2 from '../pages/LazyImagePage/LazyImage2'
+import LazyImage3 from '../pages/LazyImagePage/LazyImage3'
 
 export const router = createBrowserRouter([
   {
@@ -117,6 +120,18 @@ export const router = createBrowserRouter([
       {
         path: '/line-clamp/2_r',
         element: <LineClamp2 />
+      },
+      {
+        path: '/lazy-image/1_r',
+        element: <LazyImage1 />
+      },
+      {
+        path: '/lazy-image/2_r',
+        element: <LazyImage2 />
+      },
+      {
+        path: '/lazy-image/3_r',
+        element: <LazyImage3 />
       }
     ]
   }
@@ -149,7 +164,11 @@ export const routePaths = [
   '/text-box/4_r',
   '/line-clamp',
   '/line-clamp/1_r',
-  '/line-clamp/2_r'
+  '/line-clamp/2_r',
+  '/lazy-image',
+  '/lazy-image/1_r',
+  '/lazy-image/2_r',
+  '/lazy-image/3_r'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -177,7 +196,8 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
       '/tab-menu',
       '/tooltip',
       '/text-box',
-      '/line-clamp'
+      '/line-clamp',
+      '/lazy-image'
     ]
   },
   '/accordion': {
@@ -355,6 +375,30 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     link: '/line-clamp/2_r',
     name: '라인클램프 두 번째 방법',
     children: LineClamp2
+  },
+  '/lazy-image': {
+    key: '/lazy-image',
+    link: '/lazy-image/1_r',
+    name: '05. 이미지 지연 로딩',
+    children: ['/lazy-image/1_r', '/lazy-image/2_r', '/lazy-image/3_r']
+  },
+  '/lazy-image/1_r': {
+    key: '/lazy-image/1_r',
+    link: '/lazy-image/1_r',
+    name: '이미지 지연 로딩 첫 번째 방법',
+    children: LazyImage1
+  },
+  '/lazy-image/2_r': {
+    key: '/lazy-image/2_r',
+    link: '/lazy-image/2_r',
+    name: '이미지 지연 로딩 두 번째 방법',
+    children: LazyImage2
+  },
+  '/lazy-image/3_r': {
+    key: '/lazy-image/3_r',
+    link: '/lazy-image/3_r',
+    name: '이미지 지연 로딩 세 번째 방법',
+    children: LazyImage3
   }
 }
 
