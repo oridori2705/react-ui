@@ -27,6 +27,7 @@ import LineClamp2 from '../pages/lineClampPage/lineClamp2'
 import LazyImage1 from '../pages/LazyImagePage/LazyImage1'
 import LazyImage2 from '../pages/LazyImagePage/LazyImage2'
 import LazyImage3 from '../pages/LazyImagePage/LazyImage3'
+import InfinityScroll1 from '@/pages/InfinityScrollPage/InfinityScroll1'
 
 export const router = createBrowserRouter([
   {
@@ -132,6 +133,10 @@ export const router = createBrowserRouter([
       {
         path: '/lazy-image/3_r',
         element: <LazyImage3 />
+      },
+      {
+        path: '/infinity-scroll/1_r',
+        element: <InfinityScroll1 />
       }
     ]
   }
@@ -168,7 +173,9 @@ export const routePaths = [
   '/lazy-image',
   '/lazy-image/1_r',
   '/lazy-image/2_r',
-  '/lazy-image/3_r'
+  '/lazy-image/3_r',
+  '/infinity-scroll',
+  '/infinity-scroll/1_r'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -197,7 +204,8 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
       '/tooltip',
       '/text-box',
       '/line-clamp',
-      '/lazy-image'
+      '/lazy-image',
+      '/infinity-scroll'
     ]
   },
   '/accordion': {
@@ -399,6 +407,18 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     link: '/lazy-image/3_r',
     name: '이미지 지연 로딩 세 번째 방법',
     children: LazyImage3
+  },
+  '/infinity-scroll': {
+    key: '/infinity-scroll',
+    link: '/infinity-scroll/1_r',
+    name: '06. 무한 스크롤',
+    children: ['/infinity-scroll/1_r']
+  },
+  '/infinity-scroll/1_r': {
+    key: '/infinity-scroll/1_r',
+    link: '/infinity-scroll/1_r',
+    name: '무한 스크롤 첫 번째 방법',
+    children: InfinityScroll1
   }
 }
 
