@@ -1,5 +1,5 @@
 import Spinner from '@/components/Spinner'
-import { Datum } from '../useInfiniteFetch'
+import useInfiniteFetch, { Datum } from '../useInfiniteFetch'
 import useInfiniteScroll from '../useInfiniteScroll'
 import styled from '@emotion/styled'
 import { pickRandom, randomize, waitFor } from '@/utils/randomFn'
@@ -24,9 +24,11 @@ const ListItem = ({
 }
 
 const InfiniteScroll1 = () => {
-  const { data, state, moreRef } = useInfiniteScroll<Datum>({
+  const { data, state, fetchNextPage } = useInfiniteFetch({
     fetchFn: generatePageData
   })
+
+  const { ref: moreRef } = useInfiniteScroll<HTMLDivElement>(fetchNextPage)
 
   return (
     <>

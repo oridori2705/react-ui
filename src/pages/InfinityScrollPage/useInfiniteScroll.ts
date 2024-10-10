@@ -1,25 +1,26 @@
 import { useEffect, useRef } from 'react'
-import useIntersectionObserver from '../LazyImagePage/hooks/useIntersectionObserver'
-import useInfiniteFetch, { UseInfiniteFetchParams } from './useInfiniteFetch'
 
-const ioOptions = { threshold: 0.5 }
-
-export type UseInfiniteScrollParams<T> = UseInfiniteFetchParams<T>
-
-const useInfiniteScroll = <T>({ fetchFn }: UseInfiniteScrollParams<T>) => {
-  const { data, state, fetchNextPage } = useInfiniteFetch({ fetchFn })
-
-  const moreRef = useRef<HTMLDivElement>(null)
-  const {
-    entries: [entry]
-  } = useIntersectionObserver(moreRef, ioOptions)
-  const isIntersecting = entry?.isIntersecting
+const useInfiniteScroll = <T extends Element>(
+  callback: () => void,
+  options?: IntersectionObserverInit
+) => {
+  const ref = useRef<T>(null)
 
   useEffect(() => {
-    if (isIntersecting) fetchNextPage()
-  }, [isIntersecting, fetchNextPage])
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(entry => entry.isIntersecting && callback()),
+      options || { threshold: 0.5 }
+    )
+    const target = ref && ref.current
 
-  return { data, state, moreRef }
+    if (!target) return
+
+    observer.observe(target)
+
+    return () => observer.unobserve(target)
+  }, [callback, options])
+
+  return { ref }
 }
 
 export default useInfiniteScroll
