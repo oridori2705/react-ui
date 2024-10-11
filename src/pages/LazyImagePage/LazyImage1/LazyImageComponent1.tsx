@@ -44,7 +44,7 @@ const LazyImageComponent1 = ({
 
   return (
     <ImageContent
-      load={loaded}
+      load={!loaded}
       ref={imgRef}
       width={width}
       height={height}
