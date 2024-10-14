@@ -1,24 +1,19 @@
-#  ✨ 리액트 UI 컴포넌트 개발
+# ✨ 리액트 UI 컴포넌트 개발
 
 ![리액트 ui](https://github.com/user-attachments/assets/64bbacbb-580c-4890-80ee-899f9a686c83)
 
-
-  
 ### 🔗 [배포 URL](https://react-ui-vert-one.vercel.app/tab-menu/6_r)
 
 <br>
 
 ## 📢프로젝트 소개
 
-
 - 스스로 계획하고 개발하는 `개인 프로젝트`입니다.
 - 리액트로 앱을 개발하면서 자주 쓰이는 UI들을 `다양한 접근 방법`으로 개발하고, `어떤 장점과 단점이 있는지 기록`하기 위해 해당 프로젝트를 기획했습니다.
 
 <br>
 
-
-##  👨‍💻개발 환경
-
+## 👨‍💻개발 환경
 
 <table>
     <thead>
@@ -49,16 +44,16 @@
     </tbody>
 </table>
 
-
 <br>
-
 
 ## 🛠️개발 기능
 
-- 아코디언 기능
-- 탭 메뉴 기능
-- 개발 중…🛠️
-
+- Accordion
+- Tab Menu
+- TextBox
+- LineClamp
+- Image LazyLoading
+- Infinity Scroll
 
 ## 🔗관련 링크
 
