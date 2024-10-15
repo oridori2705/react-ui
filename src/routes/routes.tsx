@@ -28,6 +28,7 @@ import LazyImage1 from '../pages/LazyImagePage/LazyImage1'
 import LazyImage2 from '../pages/LazyImagePage/LazyImage2'
 import LazyImage3 from '../pages/LazyImagePage/LazyImage3'
 import InfinityScroll1 from '@/pages/InfinityScrollPage/InfinityScroll1'
+import HorizontalScrollBox1 from '@/pages/HorizontalScrollBoxPage/HorizontalScrollBox1'
 
 export const router = createBrowserRouter([
   {
@@ -137,6 +138,10 @@ export const router = createBrowserRouter([
       {
         path: '/infinity-scroll/1_r',
         element: <InfinityScroll1 />
+      },
+      {
+        path: '/horizontal-scroll-box/1_r',
+        element: <HorizontalScrollBox1 />
       }
     ]
   }
@@ -175,7 +180,9 @@ export const routePaths = [
   '/lazy-image/2_r',
   '/lazy-image/3_r',
   '/infinity-scroll',
-  '/infinity-scroll/1_r'
+  '/infinity-scroll/1_r',
+  '/horizontal-scroll-box',
+  '/horizontal-scroll-box/1_r'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -205,7 +212,8 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
       '/text-box',
       '/line-clamp',
       '/lazy-image',
-      '/infinity-scroll'
+      '/infinity-scroll',
+      '/horizontal-scroll-box'
     ]
   },
   '/accordion': {
@@ -419,6 +427,18 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     link: '/infinity-scroll/1_r',
     name: '무한 스크롤 첫 번째 방법',
     children: InfinityScroll1
+  },
+  '/horizontal-scroll-box': {
+    key: '/horizontal-scroll-box',
+    link: '/horizontal-scroll-box/1_r',
+    name: '07. 횡 스크롤 박스',
+    children: ['/horizontal-scroll-box/1_r']
+  },
+  '/horizontal-scroll-box/1_r': {
+    key: '/horizontal-scroll-box/1_r',
+    link: '/horizontal-scroll-box/1_r',
+    name: '횡 스크롤 박스 첫 번째 방법',
+    children: HorizontalScrollBox1
   }
 }
 
