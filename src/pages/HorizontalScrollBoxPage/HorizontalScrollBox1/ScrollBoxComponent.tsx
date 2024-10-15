@@ -10,11 +10,11 @@ import {
 } from 'react'
 import {
   BoxList,
-  List,
   NextNavButton,
   Observer,
   PrevNavButton,
-  ScrollBox
+  ScrollBoxContainer,
+  UlContainer
 } from './HorizontalScrollBox.styled'
 import useIntersectionObserver from './useIntersectionObserver'
 
@@ -125,8 +125,8 @@ const ScrollBoxComponent = <T extends { id: string }>(
   }, [watcherEntries])
 
   return (
-    <ScrollBox wrapperClassName={wrapperClassName}>
-      <List ref={listRef}>
+    <ScrollBoxContainer wrapperClassName={wrapperClassName}>
+      <UlContainer ref={listRef}>
         <Observer
           ref={r => {
             watcherRef.current[0] = r
@@ -152,7 +152,7 @@ const ScrollBoxComponent = <T extends { id: string }>(
           }}
           data-direction="next"
         />
-      </List>
+      </UlContainer>
       <PrevNavButton
         isActive={buttonEnabled.prev}
         onClick={() => move('prev')}
@@ -161,7 +161,7 @@ const ScrollBoxComponent = <T extends { id: string }>(
         isActive={buttonEnabled.next}
         onClick={() => move('next')}
       />
-    </ScrollBox>
+    </ScrollBoxContainer>
   )
 }
 const ForwardedScrollBox = forwardRef(ScrollBoxComponent) as <

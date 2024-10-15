@@ -13,7 +13,7 @@ interface NavButtonProps {
   isActive?: boolean
 }
 
-export const ScrollBox = styled.div<ScrollBoxProps>`
+export const ScrollBoxContainer = styled.div<ScrollBoxProps>`
   position: relative;
 
   ${({ wrapperClassName }) =>
@@ -23,7 +23,7 @@ export const ScrollBox = styled.div<ScrollBoxProps>`
   `}
 `
 
-export const List = styled.ul`
+export const UlContainer = styled.ul`
   display: flex;
   flex-wrap: nowrap;
   list-style: none;
