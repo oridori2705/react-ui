@@ -13,6 +13,10 @@ interface NavButtonProps {
   isActive?: boolean
 }
 
+interface ULContainerProps {
+  isSetScrollBar?: boolean
+}
+
 export const ScrollBoxContainer = styled.div<ScrollBoxProps>`
   position: relative;
 
@@ -23,14 +27,14 @@ export const ScrollBoxContainer = styled.div<ScrollBoxProps>`
   `}
 `
 
-export const UlContainer = styled.ul`
+export const UlContainer = styled.ul<ULContainerProps>`
   display: flex;
   flex-wrap: nowrap;
   list-style: none;
   padding: 0;
   margin: 0;
   overflow-y: hidden;
-  overflow-x: auto;
+  overflow-x: ${({ isSetScrollBar }) => (isSetScrollBar ? 'auto' : 'hidden')};
 `
 
 export const BoxList = styled.li<ItemProps>`

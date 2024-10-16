@@ -7,7 +7,7 @@ const HorizontalScrollBox2 = () => {
     <>
       <h3>#2. React/합성 컴포넌트 패턴</h3>
 
-      <ScrollBox>
+      <ScrollBox isSetScrollBar={false}>
         {data.map((item, index) => (
           <ScrollBox.Wrapper
             key={item.id}

@@ -35,6 +35,7 @@ type ScrollBoxProps<T> = {
   currentIndex?: number
   wrapperClassName?: string
   handleItemClick?: (item: T, index: number) => () => void
+  isSetScrollBar?: boolean
 }
 
 const getVisibleEdgeItems = (
@@ -63,7 +64,8 @@ const ScrollBoxComponent = <T extends { id: string }>(
     Item,
     currentIndex = 0,
     wrapperClassName = '',
-    handleItemClick
+    handleItemClick,
+    isSetScrollBar = true
   }: ScrollBoxProps<T>,
   ref: ForwardedRef<unknown>
 ) => {
@@ -126,7 +128,9 @@ const ScrollBoxComponent = <T extends { id: string }>(
 
   return (
     <ScrollBoxContainer wrapperClassName={wrapperClassName}>
-      <UlContainer ref={listRef}>
+      <UlContainer
+        isSetScrollBar={isSetScrollBar}
+        ref={listRef}>
         <Observer
           ref={r => {
             watcherRef.current[0] = r

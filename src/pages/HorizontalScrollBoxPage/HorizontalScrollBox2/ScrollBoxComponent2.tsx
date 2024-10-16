@@ -14,7 +14,13 @@ type Direction = 'prev' | 'next'
 export type ItemElemType = HTMLLIElement | null
 const DefaultButtonState = { prev: true, next: true }
 
-const ScrollBoxComponent = ({ children }: { children: ReactNode }) => {
+const ScrollBoxComponent = ({
+  isSetScrollBar,
+  children
+}: {
+  isSetScrollBar?: boolean
+  children: ReactNode
+}) => {
   const [buttonEnabled, setButtonEnabled] = useState<{
     prev: boolean
     next: boolean
@@ -62,7 +68,9 @@ const ScrollBoxComponent = ({ children }: { children: ReactNode }) => {
     <div>
       <ScrollBoxContainer>
         <ScrollBoxContext.Provider value={{ registerItem }}>
-          <UlContainer ref={listRef}>
+          <UlContainer
+            isSetScrollBar={isSetScrollBar}
+            ref={listRef}>
             <Observer
               ref={r => {
                 watcherRef.current[0] = r
