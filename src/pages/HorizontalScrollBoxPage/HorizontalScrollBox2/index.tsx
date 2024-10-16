@@ -44,6 +44,7 @@ const HorizontalScrollBox2 = () => {
           <StyledCode>isSetScrollBar</StyledCode>를 Props로 받을 수 있게
           했습니다.
         </p>
+        <p>- 양쪽에 그라데이션을 추가했습니다.</p>
         <br />
         <p>
           <StyledStrongPositive>사용 방법</StyledStrongPositive>
