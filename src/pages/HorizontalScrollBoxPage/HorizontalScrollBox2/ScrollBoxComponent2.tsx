@@ -2,6 +2,7 @@ import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 import { Wrapper } from './DefaultComponent'
 import useIntersectionObserver from '../HorizontalScrollBox1/useIntersectionObserver'
 import {
+  GradientOverlay,
   NextNavButton,
   Observer,
   PrevNavButton,
@@ -86,6 +87,10 @@ const ScrollBoxComponent = ({
             />
           </UlContainer>
         </ScrollBoxContext.Provider>
+        <GradientOverlay
+          showLeft={buttonEnabled.prev}
+          showRight={buttonEnabled.next}
+        />
         <PrevNavButton
           isActive={buttonEnabled.prev}
           onClick={() => move('prev')}

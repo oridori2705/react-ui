@@ -17,6 +17,10 @@ interface ULContainerProps {
   isSetScrollBar?: boolean
 }
 
+interface GradientOverlayProps {
+  showLeft: boolean
+  showRight: boolean
+}
 export const ScrollBoxContainer = styled.div<ScrollBoxProps>`
   position: relative;
 
@@ -25,6 +29,22 @@ export const ScrollBoxContainer = styled.div<ScrollBoxProps>`
     `
     ${wrapperClassName}
   `}
+`
+
+export const GradientOverlay = styled.div<GradientOverlayProps>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, ${props => (props.showLeft ? 0.5 : 0)}) 0%,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 0) 90%,
+    rgba(0, 0, 0, ${props => (props.showRight ? 0.5 : 0)}) 100%
+  );
 `
 
 export const UlContainer = styled.ul<ULContainerProps>`
