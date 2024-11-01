@@ -7,7 +7,7 @@ import {
   useRef,
   useState
 } from 'react'
-import { Container, Nav, NavItem, Title } from './ScrollSpy.styled'
+import { Nav, NavContainer, NavItem, Title } from './ScrollSpy.styled'
 import { useViewportRect } from '@/hooks/viewport/useViewportRect'
 import { ListItem, UList } from './DefaultComponent'
 
@@ -101,8 +101,8 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
   }, [viewportTop, setCurrentItem])
 
   return (
-    <Container>
-      <header className="floatingHeader">
+    <div>
+      <NavContainer>
         <Title>
           #1. React<sub>scroll event</sub>
         </Title>
@@ -123,9 +123,9 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
               )
           )}
         </Nav>
-      </header>
+      </NavContainer>
       <div ref={containerRef}>{children}</div>
-    </Container>
+    </div>
   )
 }
 

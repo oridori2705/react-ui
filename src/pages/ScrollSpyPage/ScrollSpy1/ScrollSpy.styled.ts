@@ -1,12 +1,10 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
-export const Container = styled.div`
-  .floatingHeader {
-    position: sticky;
-    box-sizing: border-box;
-    top: -60px;
-  }
+export const NavContainer = styled.div`
+  position: sticky;
+  box-sizing: border-box;
+  top: -60px;
 `
 
 export const Title = styled.h3`
