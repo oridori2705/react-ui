@@ -14,7 +14,7 @@ import { ListItem, UList } from './DefaultComponent'
 const HeaderHeight = 60
 
 type ItemInfo = {
-  scrollNumber: number
+  scrollIndex: number
   top: number
   height: number
   elem: HTMLElement
@@ -51,8 +51,8 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
         scrollTop < item.top - HeaderHeight + item.height / 2
     )
     if (target) {
-      setCurrentIndex(target.scrollNumber)
-      navsRef.current[target.scrollNumber]?.scrollIntoView({
+      setCurrentIndex(target.scrollIndex)
+      navsRef.current[target.scrollIndex]?.scrollIntoView({
         block: 'nearest',
         inline: 'center',
         behavior: 'instant'
@@ -60,8 +60,8 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
     }
   }, [viewportTop])
 
-  const handleNavClick = useCallback((scrollNumber: number) => {
-    const itemY = (itemsRef.current[scrollNumber]?.top || 0) - HeaderHeight
+  const handleNavClick = useCallback((scrollIndex: number) => {
+    const itemY = (itemsRef.current[scrollIndex]?.top || 0) - HeaderHeight
     window.scrollTo({
       top: itemY,
       behavior: 'smooth'
@@ -82,7 +82,7 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
           elem: elem as HTMLElement,
           top: top + scrollTop,
           height,
-          scrollNumber: index
+          scrollIndex: index
         }
       })
     }
@@ -111,13 +111,13 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
             item =>
               item && (
                 <NavItem
-                  $isCurrent={currentIndex === item.scrollNumber}
+                  $isCurrent={currentIndex === item.scrollIndex}
                   key={item.elem.dataset.id}
                   ref={r => {
-                    navsRef.current[item.scrollNumber] = r
+                    navsRef.current[item.scrollIndex] = r
                   }}>
-                  <button onClick={() => handleNavClick(item.scrollNumber)}>
-                    {item.scrollNumber + 1}
+                  <button onClick={() => handleNavClick(item.scrollIndex)}>
+                    {item.scrollIndex + 1}
                   </button>
                 </NavItem>
               )

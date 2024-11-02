@@ -21,6 +21,7 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const navsRef = useRef<Elem[]>([])
   const itemsRef = useRef<Elem[]>([])
+  const titleRefs = useRef<string[]>([])
   const containerRef = useRef<HTMLDivElement>(null)
   const { entries } = useIntersectionObserver(itemsRef, IOOptions)
 
@@ -47,11 +48,13 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
     const listItems = containerRef.current?.querySelectorAll(
       'ul > li[data-number]'
     )
+    const listItemTitles = containerRef.current?.querySelectorAll('.list-title')
 
-    if (!listItems) return
-    itemsRef.current = Array.from(listItems).map(elem => {
-      return elem as HTMLElement
-    })
+    if (!listItems || !listItemTitles) return
+    itemsRef.current = Array.from(listItems).map(elem => elem as HTMLElement)
+    titleRefs.current = Array.from(listItemTitles).map(
+      elem => elem.textContent || ''
+    )
   }, [])
 
   useEffect(() => {
@@ -61,7 +64,6 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
 
     if (intersectingTargets.length === 0) return
 
-    //관찰 시점이 아닌 현재 시점에서 top값을 다시 계산
     const positions = intersectingTargets.map(element => ({
       index: Number(element.dataset.number),
       distance: Math.abs(element.getBoundingClientRect().top - HeaderHeight)
@@ -94,7 +96,7 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
                     onClick={() =>
                       handleNavClick(Number(item.dataset!.number))
                     }>
-                    {Number(item.dataset!.number) + 1}
+                    {titleRefs.current[Number(item.dataset!.number)]}
                   </button>
                 </NavItem>
               )

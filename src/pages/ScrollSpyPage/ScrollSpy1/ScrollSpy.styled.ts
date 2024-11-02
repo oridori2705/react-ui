@@ -50,6 +50,11 @@ export const NavItem = styled.li<{ $isCurrent: boolean }>`
     font-size: 1.25rem;
     background-color: transparent;
     transition: ease-out 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+    text-align: left;
 
     &:hover {
       background-color: #ccc;

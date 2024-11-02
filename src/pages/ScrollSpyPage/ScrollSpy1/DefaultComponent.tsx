@@ -5,18 +5,25 @@ export const UList = ({ children }: { children: ReactElement[] }) => {
 }
 
 export const ListItem = ({
-  scrollNumber,
+  scrollIndex,
   ItemId,
+  title,
   children
 }: {
   ItemId: number | string
-  scrollNumber: number
+  scrollIndex: number
+  title: string
   children: ReactElement
 }) => {
   return (
     <li
       data-id={ItemId}
-      data-number={scrollNumber}>
+      data-number={scrollIndex}>
+      <div
+        className="list-title"
+        style={{ display: 'none' }}>
+        {title}
+      </div>
       {children}
     </li>
   )

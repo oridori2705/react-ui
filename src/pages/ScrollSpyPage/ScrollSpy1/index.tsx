@@ -36,7 +36,8 @@ const ScrollSpy1 = () => {
             <ScrollSpy.ListItem
               key={item.id}
               ItemId={item.id}
-              scrollNumber={item.index + 1}>
+              title={item.title}
+              scrollIndex={item.index}>
               <ListItem
                 {...item}
                 number={item.index + 1}
@@ -105,4 +106,5 @@ window.scroll({
 문제 1. contextAPI 사용으로 인해 전체가 불필요하게 렌더링됩니다.
 문제 2. Ul과 Li라는 합성 컴포넌트 사용을 강제해야합니다.
 문제 3. 여전히 네비게이션은 인덱스로만 가능한 문제
+문제 4. 스크롤 이벤트가 안일어났을 때 Nav 아이템이 초기에 안나타나는 문제
 */

@@ -32,6 +32,7 @@ import HorizontalScrollBox1 from '@/pages/HorizontalScrollBoxPage/HorizontalScro
 import HorizontalScrollBox2 from '@/pages/HorizontalScrollBoxPage/HorizontalScrollBox2'
 import ScrollSpy2 from '@/pages/ScrollSpyPage/ScrollSpy2'
 import ScrollSpy1 from '@/pages/ScrollSpyPage/ScrollSpy1'
+import ScrollSpy3 from '@/pages/ScrollSpyPage/ScrollSpy3'
 
 export const router = createBrowserRouter([
   {
@@ -157,6 +158,10 @@ export const router = createBrowserRouter([
       {
         path: '/scroll-spy/2_r',
         element: <ScrollSpy2 />
+      },
+      {
+        path: '/scroll-spy/3_r',
+        element: <ScrollSpy3 />
       }
     ]
   }
@@ -201,7 +206,8 @@ export const routePaths = [
   '/horizontal-scroll-box/2_r',
   '/scroll-spy',
   '/scroll-spy/1_r',
-  '/scroll-spy/2_r'
+  '/scroll-spy/2_r',
+  '/scroll-spy/3_r'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -470,7 +476,7 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: '/scroll-spy',
     link: '/scroll-spy/1_r',
     name: '08. 스크롤 스파이',
-    children: ['/scroll-spy/1_r', '/scroll-spy/2_r']
+    children: ['/scroll-spy/1_r', '/scroll-spy/2_r', '/scroll-spy/3_r']
   },
   '/scroll-spy/1_r': {
     key: '/scroll-spy/1_r',
@@ -483,6 +489,12 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     link: '/scroll-spy/2_r',
     name: '스크롤 스파이 두 번째 방법',
     children: ScrollSpy2
+  },
+  '/scroll-spy/3_r': {
+    key: '/scroll-spy/3_r',
+    link: '/scroll-spy/3_r',
+    name: '스크롤 스파이 세 번째 방법',
+    children: ScrollSpy3
   }
 }
 

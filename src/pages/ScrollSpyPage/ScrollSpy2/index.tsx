@@ -34,7 +34,8 @@ const ScrollSpy1 = () => {
           <ScrollSpy.ListItem
             key={item.id}
             ItemId={item.id}
-            scrollNumber={item.index + 1}>
+            title={item.title}
+            scrollIndex={item.index}>
             <ListItem
               {...item}
               number={item.index + 1}
