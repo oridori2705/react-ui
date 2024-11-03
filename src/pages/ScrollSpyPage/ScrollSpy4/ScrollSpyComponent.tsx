@@ -1,7 +1,8 @@
-import useIntersectionObserver from '@/pages/HorizontalScrollBoxPage/HorizontalScrollBox1/useIntersectionObserver'
 import {
   Children,
+  MutableRefObject,
   ReactElement,
+  ReactNode,
   isValidElement,
   useCallback,
   useEffect,
@@ -15,6 +16,8 @@ import {
   Title
 } from '../ScrollSpy1/ScrollSpy.styled'
 import { ListItem, UList } from '../ScrollSpy1/DefaultComponent'
+import useIntersectionObserver from '@/pages/HorizontalScrollBoxPage/HorizontalScrollBox1/useIntersectionObserver'
+import { PageLayout } from './ScrollSpyNav.styled'
 
 const HeaderHeight = 60
 
@@ -25,7 +28,27 @@ const IOOptions: IntersectionObserverInit = {
 
 type Elem = HTMLElement | null
 
-const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
+interface DataItem {
+  id: number | string
+  title: string
+  index: number
+  description: string
+}
+
+export interface RenderNavProps {
+  currentIndex: number
+  items: DataItem[]
+  navsRef: MutableRefObject<(HTMLElement | null)[]>
+  onNavClick: (index: number) => void
+}
+
+interface ScrollSpyProps {
+  children: ReactElement
+  data: DataItem[]
+  renderNav?: (props: RenderNavProps) => ReactNode
+}
+
+const ScrollSpyComponent = ({ children, data, renderNav }: ScrollSpyProps) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const navsRef = useRef<Elem[]>([])
   const itemsRef = useRef<Elem[]>([])
@@ -49,11 +72,20 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
 
   const setCurrentItem = useCallback((index: number) => {
     setCurrentIndex(index)
-    navsRef.current[index]?.scrollIntoView({
-      block: 'nearest',
-      inline: 'center',
-      behavior: 'instant'
-    })
+    // 현재 Nav가 가로스크롤인지 세로스크롤인지 판단
+    const element = navsRef.current[index]
+
+    if (element) {
+      const hasVerticalScroll = element.scrollHeight > element.clientHeight
+
+      const blockPosition = hasVerticalScroll ? 'nearest' : 'center'
+
+      element.scrollIntoView({
+        block: blockPosition,
+        inline: 'center',
+        behavior: 'instant'
+      })
+    }
   }, [])
 
   const handleNavClick = useCallback((index: number) => {
@@ -72,9 +104,7 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
     )
 
     if (!listItems) return
-    itemsRef.current = Array.from(listItems).map(elem => {
-      return elem as HTMLElement
-    })
+    itemsRef.current = Array.from(listItems).map(elem => elem as HTMLElement)
   }, [])
 
   useEffect(() => {
@@ -84,7 +114,6 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
 
     if (intersectingTargets.length === 0) return
 
-    //관찰 시점이 아닌 현재 시점에서 top값을 다시 계산
     const positions = intersectingTargets.map(element => ({
       index: Number(element.dataset.number),
       distance: Math.abs(element.getBoundingClientRect().top - HeaderHeight)
@@ -98,38 +127,53 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
   }, [entries, setCurrentItem])
 
   return (
-    <div>
-      <NavContainer>
-        <Title>
-          #1. React<sub>scroll event</sub>
-        </Title>
-        <Nav>
-          {itemsRef.current?.map(
-            item =>
-              item && (
-                <NavItem
-                  $isCurrent={currentIndex === Number(item.dataset!.number)}
-                  key={item.dataset.id}
-                  ref={r => {
-                    navsRef.current[Number(item.dataset!.number)] = r
-                  }}>
-                  <button
-                    onClick={() =>
-                      handleNavClick(Number(item.dataset!.number))
-                    }>
-                    {Number(item.dataset!.number) + 1}
-                  </button>
-                </NavItem>
-              )
-          )}
-        </Nav>
-      </NavContainer>
+    <PageLayout>
+      {renderNav
+        ? renderNav({
+            currentIndex,
+            items: data,
+            navsRef,
+            onNavClick: handleNavClick
+          })
+        : defaultNavRender({
+            currentIndex,
+            items: data,
+            navsRef,
+            onNavClick: handleNavClick
+          })}
       <div ref={containerRef}>{children}</div>
-    </div>
+    </PageLayout>
   )
 }
+
 const ScrollSpy = Object.assign(ScrollSpyComponent, {
   UList,
   ListItem
 })
+
 export default ScrollSpy
+
+const defaultNavRender = ({
+  currentIndex,
+  items,
+  navsRef,
+  onNavClick
+}: RenderNavProps) => (
+  <NavContainer>
+    <Title>
+      #1. React<sub>scroll event</sub>
+    </Title>
+    <Nav>
+      {items.map((item, index) => (
+        <NavItem
+          key={item.id}
+          $isCurrent={currentIndex === index}
+          ref={r => {
+            navsRef.current[index] = r
+          }}>
+          <button onClick={() => onNavClick(index)}>{item.title}</button>
+        </NavItem>
+      ))}
+    </Nav>
+  </NavContainer>
+)

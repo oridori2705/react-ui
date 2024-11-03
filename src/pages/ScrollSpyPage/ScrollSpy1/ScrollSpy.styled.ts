@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 
 export const NavContainer = styled.div`
   position: sticky;
+  width: 100%;
   box-sizing: border-box;
   top: -60px;
 `
@@ -19,6 +20,7 @@ export const Title = styled.h3`
 
 export const Nav = styled.ul`
   display: flex;
+
   flex-wrap: nowrap;
   height: 50px;
   box-sizing: border-box;

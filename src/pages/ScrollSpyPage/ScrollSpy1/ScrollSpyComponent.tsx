@@ -4,6 +4,7 @@ import {
   isValidElement,
   useCallback,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState
 } from 'react'
@@ -68,7 +69,7 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
     })
   }, [])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const calculateItems = () => {
       const scrollTop = document.scrollingElement!.scrollTop
       const listItems = containerRef.current?.querySelectorAll(

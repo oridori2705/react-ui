@@ -1,5 +1,13 @@
 import useIntersectionObserver from '@/pages/HorizontalScrollBoxPage/HorizontalScrollBox1/useIntersectionObserver'
-import { ReactElement, useCallback, useEffect, useRef, useState } from 'react'
+import {
+  Children,
+  ReactElement,
+  isValidElement,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from 'react'
 import {
   Nav,
   NavContainer,
@@ -24,6 +32,21 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
   const titleRefs = useRef<string[]>([])
   const containerRef = useRef<HTMLDivElement>(null)
   const { entries } = useIntersectionObserver(itemsRef, IOOptions)
+
+  if (children.type !== UList) {
+    throw new Error(
+      'ScrollSpy를 사용할 때 반드시 ScrollSpy.UList 컴포넌트를 사용해야합니다.'
+    )
+  }
+
+  const childrenArray = Children.toArray(children.props.children)
+  childrenArray.forEach(child => {
+    if (!isValidElement(child) || child.type !== ListItem) {
+      throw new Error(
+        'ScrollSpy.UList의 자식 컴포넌트는 반드시 ScrollSpy.ListItem 컴포넌트여야 합니다.'
+      )
+    }
+  })
 
   const setCurrentItem = useCallback((index: number) => {
     setCurrentIndex(index)
