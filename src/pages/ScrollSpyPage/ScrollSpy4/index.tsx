@@ -5,7 +5,6 @@ import ScrollSpy, { RenderNavProps } from './ScrollSpyComponent'
 const ScrollSpy4 = () => {
   return (
     <ScrollSpy
-      data={data}
       renderNav={customNavRender} // 생략하면 기본 네비게이션 사용
     >
       <ScrollSpy.UList>
@@ -29,11 +28,13 @@ const ScrollSpy4 = () => {
 export default ScrollSpy4
 
 // 선택적으로 커스텀 네비게이션 구현
-const customNavRender = (
-  { currentIndex, items, navsRef, onNavClick }: RenderNavProps //export 된 타입 사용
-) => (
+const customNavRender = ({
+  currentIndex,
+  navsRef,
+  onNavClick
+}: RenderNavProps) => (
   <CustomNavContainer>
-    {items.map((item, index) => (
+    {data.map((item, index) => (
       <CustomNavItem
         key={item.id}
         $isActive={currentIndex === index}

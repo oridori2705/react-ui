@@ -28,30 +28,22 @@ const IOOptions: IntersectionObserverInit = {
 
 type Elem = HTMLElement | null
 
-interface DataItem {
-  id: number | string
-  title: string
-  index: number
-  description: string
-}
-
 export interface RenderNavProps {
   currentIndex: number
-  items: DataItem[]
   navsRef: MutableRefObject<(HTMLElement | null)[]>
   onNavClick: (index: number) => void
 }
 
 interface ScrollSpyProps {
   children: ReactElement
-  data: DataItem[]
   renderNav?: (props: RenderNavProps) => ReactNode
 }
 
-const ScrollSpyComponent = ({ children, data, renderNav }: ScrollSpyProps) => {
+const ScrollSpyComponent = ({ children, renderNav }: ScrollSpyProps) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const navsRef = useRef<Elem[]>([])
   const itemsRef = useRef<Elem[]>([])
+  const titleRefs = useRef<string[]>([])
   const containerRef = useRef<HTMLDivElement>(null)
   const { entries } = useIntersectionObserver(itemsRef, IOOptions)
 
@@ -102,9 +94,13 @@ const ScrollSpyComponent = ({ children, data, renderNav }: ScrollSpyProps) => {
     const listItems = containerRef.current?.querySelectorAll(
       'ul > li[data-number]'
     )
+    const listItemTitles = containerRef.current?.querySelectorAll('.list-title')
 
-    if (!listItems) return
+    if (!listItems || !listItemTitles) return
     itemsRef.current = Array.from(listItems).map(elem => elem as HTMLElement)
+    titleRefs.current = Array.from(listItemTitles).map(
+      elem => elem.textContent || ''
+    )
   }, [])
 
   useEffect(() => {
@@ -126,18 +122,40 @@ const ScrollSpyComponent = ({ children, data, renderNav }: ScrollSpyProps) => {
     setCurrentItem(closest.index)
   }, [entries, setCurrentItem])
 
+  const defaultNavRender = ({
+    currentIndex,
+    navsRef,
+    onNavClick
+  }: RenderNavProps) => (
+    <NavContainer>
+      <Title>
+        #1. React<sub>scroll event</sub>
+      </Title>
+      <Nav>
+        {titleRefs.current.map((title, index) => (
+          <NavItem
+            key={title + index}
+            $isCurrent={currentIndex === index}
+            ref={r => {
+              navsRef.current[index] = r
+            }}>
+            <button onClick={() => onNavClick(index)}>{title}</button>
+          </NavItem>
+        ))}
+      </Nav>
+    </NavContainer>
+  )
+
   return (
     <PageLayout>
       {renderNav
         ? renderNav({
             currentIndex,
-            items: data,
             navsRef,
             onNavClick: handleNavClick
           })
         : defaultNavRender({
             currentIndex,
-            items: data,
             navsRef,
             onNavClick: handleNavClick
           })}
@@ -152,28 +170,3 @@ const ScrollSpy = Object.assign(ScrollSpyComponent, {
 })
 
 export default ScrollSpy
-
-const defaultNavRender = ({
-  currentIndex,
-  items,
-  navsRef,
-  onNavClick
-}: RenderNavProps) => (
-  <NavContainer>
-    <Title>
-      #1. React<sub>scroll event</sub>
-    </Title>
-    <Nav>
-      {items.map((item, index) => (
-        <NavItem
-          key={item.id}
-          $isCurrent={currentIndex === index}
-          ref={r => {
-            navsRef.current[index] = r
-          }}>
-          <button onClick={() => onNavClick(index)}>{item.title}</button>
-        </NavItem>
-      ))}
-    </Nav>
-  </NavContainer>
-)
