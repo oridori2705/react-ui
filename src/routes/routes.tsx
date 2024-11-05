@@ -34,6 +34,7 @@ import ScrollSpy2 from '@/pages/ScrollSpyPage/ScrollSpy2'
 import ScrollSpy1 from '@/pages/ScrollSpyPage/ScrollSpy1'
 import ScrollSpy3 from '@/pages/ScrollSpyPage/ScrollSpy3'
 import ScrollSpy4 from '@/pages/ScrollSpyPage/ScrollSpy4'
+import ScrollSpy5 from '@/pages/ScrollSpyPage/ScrollSpy5'
 
 export const router = createBrowserRouter([
   {
@@ -167,6 +168,10 @@ export const router = createBrowserRouter([
       {
         path: '/scroll-spy/4_r',
         element: <ScrollSpy4 />
+      },
+      {
+        path: '/scroll-spy/5_r',
+        element: <ScrollSpy5 />
       }
     ]
   }
@@ -213,7 +218,8 @@ export const routePaths = [
   '/scroll-spy/1_r',
   '/scroll-spy/2_r',
   '/scroll-spy/3_r',
-  '/scroll-spy/4_r'
+  '/scroll-spy/4_r',
+  '/scroll-spy/5_r'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -486,7 +492,8 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
       '/scroll-spy/1_r',
       '/scroll-spy/2_r',
       '/scroll-spy/3_r',
-      '/scroll-spy/4_r'
+      '/scroll-spy/4_r',
+      '/scroll-spy/5_r'
     ]
   },
   '/scroll-spy/1_r': {
@@ -512,6 +519,12 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     link: '/scroll-spy/4_r',
     name: '스크롤 스파이 네 번째 방법',
     children: ScrollSpy4
+  },
+  '/scroll-spy/5_r': {
+    key: '/scroll-spy/5_r',
+    link: '/scroll-spy/4_r',
+    name: '스크롤 스파이 다섯 번째 방법',
+    children: ScrollSpy5
   }
 }
 

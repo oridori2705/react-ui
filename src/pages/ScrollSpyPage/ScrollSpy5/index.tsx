@@ -2,11 +2,9 @@ import styled from '@emotion/styled'
 import data from '../data'
 import ScrollSpy, { RenderNavProps } from './ScrollSpyComponent'
 
-const ScrollSpy4 = () => {
+const ScrollSpy5 = () => {
   return (
-    <ScrollSpy
-      renderNav={customNavRender} // 생략하면 기본 네비게이션 사용
-    >
+    <ScrollSpy renderNav={customNavRender}>
       <ScrollSpy.UList>
         {data.map(item => (
           <ScrollSpy.ListItem
@@ -25,7 +23,7 @@ const ScrollSpy4 = () => {
   )
 }
 
-export default ScrollSpy4
+export default ScrollSpy5
 
 const customNavRender = ({
   currentIndex,

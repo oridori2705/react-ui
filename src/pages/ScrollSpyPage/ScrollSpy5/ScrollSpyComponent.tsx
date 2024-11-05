@@ -1,31 +1,39 @@
-import useIntersectionObserver from '@/pages/HorizontalScrollBoxPage/HorizontalScrollBox1/useIntersectionObserver'
 import {
   Children,
+  MutableRefObject,
   ReactElement,
+  ReactNode,
   isValidElement,
   useCallback,
   useEffect,
   useRef,
   useState
 } from 'react'
-import {
-  Nav,
-  NavContainer,
-  NavItem,
-  Title
-} from '../ScrollSpy1/ScrollSpy.styled'
 import { ListItem, UList } from '../ScrollSpy1/DefaultComponent'
+import useIntersectionObserver from '@/pages/HorizontalScrollBoxPage/HorizontalScrollBox1/useIntersectionObserver'
+import { PageLayout } from '../ScrollSpy4/ScrollSpyNav.styled'
 
 const HeaderHeight = 60
 
 const IOOptions: IntersectionObserverInit = {
   rootMargin: `-${HeaderHeight}px 0% 0% 0%`,
-  threshold: [0.5]
+  threshold: [0.5, 1]
 }
 
 type Elem = HTMLElement | null
 
-const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
+export interface RenderNavProps {
+  currentIndex: number
+  navsRef: MutableRefObject<(HTMLElement | null)[]>
+  onNavClick: (index: number) => void
+}
+
+interface ScrollSpyProps {
+  children: ReactElement
+  renderNav: (props: RenderNavProps) => ReactNode
+}
+
+const ScrollSpyComponent = ({ children, renderNav }: ScrollSpyProps) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const navsRef = useRef<Elem[]>([])
   const itemsRef = useRef<Elem[]>([])
@@ -49,11 +57,19 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
 
   const setCurrentItem = useCallback((index: number) => {
     setCurrentIndex(index)
-    navsRef.current[index]?.scrollIntoView({
-      block: 'nearest',
-      inline: 'center',
-      behavior: 'instant'
-    })
+    const element = navsRef.current[index]
+
+    if (element) {
+      const hasVerticalScroll = element.scrollHeight > element.clientHeight
+
+      const blockPosition = hasVerticalScroll ? 'nearest' : 'center'
+
+      element.scrollIntoView({
+        block: blockPosition,
+        inline: 'center',
+        behavior: 'instant'
+      })
+    }
   }, [])
 
   const handleNavClick = useCallback((index: number) => {
@@ -72,9 +88,7 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
     )
 
     if (!listItems) return
-    itemsRef.current = Array.from(listItems).map(elem => {
-      return elem as HTMLElement
-    })
+    itemsRef.current = Array.from(listItems).map(elem => elem as HTMLElement)
   }, [])
 
   useEffect(() => {
@@ -84,7 +98,6 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
 
     if (intersectingTargets.length === 0) return
 
-    //관찰 시점이 아닌 현재 시점에서 top값을 다시 계산
     const positions = intersectingTargets.map(element => ({
       index: Number(element.dataset.number),
       distance: Math.abs(element.getBoundingClientRect().top - HeaderHeight)
@@ -98,38 +111,20 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
   }, [entries, setCurrentItem])
 
   return (
-    <div>
-      <NavContainer>
-        <Title>
-          #1. React<sub>scroll event</sub>
-        </Title>
-        <Nav>
-          {itemsRef.current?.map(
-            item =>
-              item && (
-                <NavItem
-                  $isCurrent={currentIndex === Number(item.dataset!.number)}
-                  key={item.dataset.id}
-                  ref={r => {
-                    navsRef.current[Number(item.dataset!.number)] = r
-                  }}>
-                  <button
-                    onClick={() =>
-                      handleNavClick(Number(item.dataset!.number))
-                    }>
-                    {Number(item.dataset!.number) + 1}
-                  </button>
-                </NavItem>
-              )
-          )}
-        </Nav>
-      </NavContainer>
+    <PageLayout>
+      {renderNav({
+        currentIndex,
+        navsRef,
+        onNavClick: handleNavClick
+      })}
       <div ref={containerRef}>{children}</div>
-    </div>
+    </PageLayout>
   )
 }
+
 const ScrollSpy = Object.assign(ScrollSpyComponent, {
   UList,
   ListItem
 })
+
 export default ScrollSpy
