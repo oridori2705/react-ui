@@ -8,12 +8,7 @@ import {
   useRef,
   useState
 } from 'react'
-import {
-  Nav,
-  NavContainer,
-  NavItem,
-  Title
-} from '../ScrollSpy1/ScrollSpy.styled'
+import { Nav, NavContainer, NavItem } from '../ScrollSpy1/ScrollSpy.styled'
 import { ListItem, UList } from '../ScrollSpy1/DefaultComponent'
 
 const HeaderHeight = 60
@@ -100,9 +95,6 @@ const ScrollSpyComponent = ({ children }: { children: ReactElement }) => {
   return (
     <div>
       <NavContainer>
-        <Title>
-          #1. React<sub>scroll event</sub>
-        </Title>
         <Nav>
           {itemsRef.current?.map(
             item =>

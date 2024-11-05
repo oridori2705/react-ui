@@ -522,7 +522,7 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
   },
   '/scroll-spy/5_r': {
     key: '/scroll-spy/5_r',
-    link: '/scroll-spy/4_r',
+    link: '/scroll-spy/5_r',
     name: '스크롤 스파이 다섯 번째 방법',
     children: ScrollSpy5
   }

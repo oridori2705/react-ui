@@ -1,27 +1,37 @@
 import styled from '@emotion/styled'
 import data from '../data'
 import ScrollSpy, { RenderNavProps } from './ScrollSpyComponent'
+import { Title, TitleSub } from '../ScrollSpy1/ScrollSpy.styled'
 
 const ScrollSpy4 = () => {
   return (
-    <ScrollSpy
-      renderNav={customNavRender} // 생략하면 기본 네비게이션 사용
-    >
-      <ScrollSpy.UList>
-        {data.map(item => (
-          <ScrollSpy.ListItem
-            key={item.id}
-            ItemId={item.id}
-            scrollIndex={item.index}
-            title={item.title}>
-            <ListItem
-              {...item}
-              number={item.index + 1}
-            />
-          </ScrollSpy.ListItem>
-        ))}
-      </ScrollSpy.UList>
-    </ScrollSpy>
+    <div>
+      <Title>
+        #4. ScrollSpy
+        <TitleSub>
+          IntersectionObserver 방식 + Render Props 패턴을 이용해 Nav를
+          범용성있게 스타일링 및 사용 가능한 방법
+        </TitleSub>
+      </Title>
+      <ScrollSpy
+        renderNav={customNavRender} // 생략하면 기본 네비게이션 사용
+      >
+        <ScrollSpy.UList>
+          {data.map(item => (
+            <ScrollSpy.ListItem
+              key={item.id}
+              ItemId={item.id}
+              scrollIndex={item.index}
+              title={item.title}>
+              <ListItem
+                {...item}
+                number={item.index + 1}
+              />
+            </ScrollSpy.ListItem>
+          ))}
+        </ScrollSpy.UList>
+      </ScrollSpy>
+    </div>
   )
 }
 

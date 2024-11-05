@@ -1,6 +1,7 @@
 import ViewportContextProvider from '@/hooks/viewport/ViewportContext'
 import data from '../data'
 import ScrollSpy from './ScrollSpyComponent'
+import { Title, TitleSub } from './ScrollSpy.styled'
 
 const ListItem = ({
   number,
@@ -30,6 +31,12 @@ const ListItem = ({
 const ScrollSpy1 = () => {
   return (
     <ViewportContextProvider>
+      <Title>
+        #1. ScrollSpy
+        <TitleSub>
+          scroll event를 활용한 방법 + 합성 컴포넌트 패턴, Context API
+        </TitleSub>
+      </Title>
       <ScrollSpy>
         <ScrollSpy.UList>
           {data.map(item => (

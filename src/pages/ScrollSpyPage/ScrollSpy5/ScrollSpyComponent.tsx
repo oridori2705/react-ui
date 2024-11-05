@@ -9,7 +9,7 @@ import {
   useRef,
   useState
 } from 'react'
-import { ListItem, UList } from '../ScrollSpy1/DefaultComponent'
+import { ListItem, UList } from './DefaultComponent'
 import useIntersectionObserver from '@/pages/HorizontalScrollBoxPage/HorizontalScrollBox1/useIntersectionObserver'
 import { PageLayout } from '../ScrollSpy4/ScrollSpyNav.styled'
 

@@ -9,12 +9,7 @@ import {
   useRef,
   useState
 } from 'react'
-import {
-  Nav,
-  NavContainer,
-  NavItem,
-  Title
-} from '../ScrollSpy1/ScrollSpy.styled'
+import { Nav, NavContainer, NavItem } from '../ScrollSpy1/ScrollSpy.styled'
 import { ListItem, UList } from '../ScrollSpy1/DefaultComponent'
 import useIntersectionObserver from '@/pages/HorizontalScrollBoxPage/HorizontalScrollBox1/useIntersectionObserver'
 import { PageLayout } from './ScrollSpyNav.styled'
@@ -128,9 +123,6 @@ const ScrollSpyComponent = ({ children, renderNav }: ScrollSpyProps) => {
     onNavClick
   }: RenderNavProps) => (
     <NavContainer>
-      <Title>
-        #1. React<sub>scroll event</sub>
-      </Title>
       <Nav>
         {titleRefs.current.map((title, index) => (
           <NavItem
