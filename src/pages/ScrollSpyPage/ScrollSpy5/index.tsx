@@ -34,19 +34,12 @@ const ScrollSpy5 = () => {
 
 export default ScrollSpy5
 
-const customNavRender = ({
-  currentIndex,
-  navsRef,
-  onNavClick
-}: RenderNavProps) => (
+const customNavRender = ({ currentIndex, onNavClick }: RenderNavProps) => (
   <CustomNavContainer>
     {data.map((item, index) => (
       <CustomNavItem
         key={item.id}
         $isActive={currentIndex === index}
-        ref={r => {
-          navsRef.current[index] = r
-        }}
         onClick={() => onNavClick(index)}>
         <button>{item.title}</button>
       </CustomNavItem>

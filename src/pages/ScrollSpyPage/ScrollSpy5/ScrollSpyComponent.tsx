@@ -40,6 +40,15 @@ const ScrollSpyComponent = ({ children, renderNav }: ScrollSpyProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const { entries } = useIntersectionObserver(itemsRef, IOOptions)
 
+  const renderNavString = renderNav.toString()
+  const requiredProps = ['currentIndex', 'navsRef', 'onNavClick']
+
+  requiredProps.forEach(prop => {
+    if (!renderNavString.includes(prop)) {
+      throw new Error(`renderNav는 꼭 ${prop} prop을 사용해야합니다!`)
+    }
+  })
+
   if (children.type !== UList) {
     throw new Error(
       'ScrollSpy를 사용할 때 반드시 ScrollSpy.UList 컴포넌트를 사용해야합니다.'
