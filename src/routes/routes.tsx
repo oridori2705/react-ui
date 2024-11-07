@@ -37,6 +37,7 @@ import ScrollSpy4 from '@/pages/ScrollSpyPage/ScrollSpy4'
 import ScrollSpy5 from '@/pages/ScrollSpyPage/ScrollSpy5'
 import SnackBar1 from '@/pages/SnackBarPage/SnackBar1'
 import SnackBar2 from '@/pages/SnackBarPage/SnackBar2'
+import SnackBar3 from '@/pages/SnackBarPage/SnackBar3'
 
 export const router = createBrowserRouter([
   {
@@ -182,6 +183,10 @@ export const router = createBrowserRouter([
       {
         path: '/snack-bar/2_r',
         element: <SnackBar2 />
+      },
+      {
+        path: '/snack-bar/3_r',
+        element: <SnackBar3 />
       }
     ]
   }
@@ -232,7 +237,8 @@ export const routePaths = [
   '/scroll-spy/5_r',
   '/snack-bar',
   '/snack-bar/1_r',
-  '/snack-bar/2_r'
+  '/snack-bar/2_r',
+  '/snack-bar/3_r'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -544,7 +550,7 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: '/snack-bar',
     link: '/snack-bar/1_r',
     name: '08. 스낵바',
-    children: ['/snack-bar/1_r', '/snack-bar/2_r']
+    children: ['/snack-bar/1_r', '/snack-bar/2_r', '/snack-bar/3_r']
   },
   '/snack-bar/1_r': {
     key: '/snack-bar/1_r',
@@ -557,6 +563,12 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     link: '/snack-bar/2_r',
     name: '스낵바 두 번째 방법',
     children: SnackBar2
+  },
+  '/snack-bar/3_r': {
+    key: '/snack-bar/3_r',
+    link: '/snack-bar/3_r',
+    name: '스낵바 세 번째 방법',
+    children: SnackBar3
   }
 }
 
