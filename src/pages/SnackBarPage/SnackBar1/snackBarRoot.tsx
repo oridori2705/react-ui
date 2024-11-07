@@ -19,6 +19,7 @@ const SnackbarItem = ({
 
   const handleAnimationEnd = () => {
     if (elemRef.current?.className.includes('enter')) {
+      // 나타나는 애니메이션이 끝난 후의 스타일 show
       setAnimationClassName(['show'])
     } else {
       removeSnackbar(id)
@@ -26,6 +27,7 @@ const SnackbarItem = ({
   }
 
   useEffect(() => {
+    // exit애니메이션을 위해서 show 된 스타일이 필요
     setAnimationClassName(isOpen ? ['enter'] : ['show', 'exit'])
   }, [isOpen])
 
