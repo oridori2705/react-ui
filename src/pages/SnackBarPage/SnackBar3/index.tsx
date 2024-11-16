@@ -9,7 +9,7 @@ const SnackBar3 = () => {
     <>
       <h2>스낵바</h2>
       <h3>
-        #2. SnackBar<sub>createPortal를 이용한 방법</sub>
+        #3. SnackBar<sub>createRoot + 싱글톤 패턴 활용</sub>
       </h3>
       <div>
         <StyledButton

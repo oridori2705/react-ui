@@ -40,7 +40,7 @@ const useSnackBar = (
     if (isSnackbarOpen.current) return
     isSnackbarOpen.current = true
     setStatus('open')
-    startTime.current = Date.now() // 애니메이션 시작 시간 기록
+    startTime.current = Date.now()
 
     timeoutId.current = window.setTimeout(() => {
       setStatus('close')
@@ -54,7 +54,7 @@ const useSnackBar = (
     setProgressPaused(true)
     if (timeoutId.current) {
       clearTimeout(timeoutId.current)
-      elapsedDuration.current += Date.now() - (startTime.current || Date.now()) // 애니메이션이 멈춘 상태에서 경과 시간을 기록
+      elapsedDuration.current += Date.now() - (startTime.current || Date.now())
       startTime.current = null
     }
   }
@@ -62,8 +62,7 @@ const useSnackBar = (
   const handleMouseLeave = () => {
     if (!progressPaused) return
     setProgressPaused(false)
-    startTime.current = Date.now() // 애니메이션 재개 시간 기록
-    const remainingTime = duration - elapsedDuration.current // 남은 시간 계산
+    const remainingTime = duration - elapsedDuration.current
 
     timeoutId.current = window.setTimeout(() => {
       setStatus('close')
