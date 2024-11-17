@@ -53,17 +53,24 @@ const useSnackBar = (
     setProgressPaused(true)
     if (timeoutId.current) {
       clearTimeout(timeoutId.current)
-      elapsedDuration.current += Date.now() - (startTime.current || Date.now())
-      startTime.current = null
+      if (startTime.current) {
+        elapsedDuration.current += Date.now() - startTime.current
+        startTime.current = null
+      }
     }
   }
 
   const handleMouseLeave = () => {
     if (!progressPaused) return
     setProgressPaused(false)
-    startTime.current = Date.now()
     const remainingTime = duration - elapsedDuration.current
 
+    if (remainingTime <= 0) {
+      setTimeout(() => setStatus(false), 400)
+      return
+    }
+
+    startTime.current = Date.now()
     timeoutId.current = window.setTimeout(() => {
       setTimeout(() => setStatus(false), 400)
     }, remainingTime)

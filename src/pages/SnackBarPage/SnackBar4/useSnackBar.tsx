@@ -40,6 +40,7 @@ const useSnackBar = (
     if (isSnackbarOpen.current) return
     isSnackbarOpen.current = true
     setStatus('open')
+    elapsedDuration.current = 0
     startTime.current = Date.now()
 
     timeoutId.current = window.setTimeout(() => {
@@ -54,8 +55,10 @@ const useSnackBar = (
     setProgressPaused(true)
     if (timeoutId.current) {
       clearTimeout(timeoutId.current)
-      elapsedDuration.current += Date.now() - (startTime.current || Date.now())
-      startTime.current = null
+      if (startTime.current) {
+        elapsedDuration.current += Date.now() - startTime.current
+        startTime.current = null
+      }
     }
   }
 
@@ -64,6 +67,14 @@ const useSnackBar = (
     setProgressPaused(false)
     const remainingTime = duration - elapsedDuration.current
 
+    if (remainingTime <= 0) {
+      setStatus('close')
+      isSnackbarOpen.current = false
+      setTimeout(() => setStatus(null), 400)
+      return
+    }
+
+    startTime.current = Date.now()
     timeoutId.current = window.setTimeout(() => {
       setStatus('close')
       isSnackbarOpen.current = false
