@@ -41,6 +41,7 @@ const useSnackBar = (
 
   const openSnackbar = useCallback(() => {
     setStatus(true)
+    elapsedDuration.current = 0
     startTime.current = Date.now()
   }, [])
 

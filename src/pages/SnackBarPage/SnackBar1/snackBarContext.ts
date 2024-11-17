@@ -98,7 +98,7 @@ const snackbarReducerMap: Record<
   upsert: (state, payload) => {
     const targetIndex = state.findIndex(item => item.id === payload.id)
     if (targetIndex > -1) {
-      const newSnackbars = state.map((item, i) => {
+      const newSnackBars = state.map((item, i) => {
         if (i === targetIndex)
           return {
             ...state[targetIndex],
@@ -106,14 +106,14 @@ const snackbarReducerMap: Record<
           }
         return item
       })
-      return newSnackbars
+      return newSnackBars
     }
 
     return [...state, { ...DefaultSnackbar, ...payload }]
   },
   remove: (state, payload) => {
     const targetIndex = state.findIndex(item => item.id === payload.id)
-    return state.filter((item, index) => index !== targetIndex)
+    return state.filter((_, index) => index !== targetIndex)
   }
 }
 

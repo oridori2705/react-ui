@@ -1,3 +1,4 @@
+import UiExplanation from '@/components/UiExplanation'
 import { data } from '../data'
 import { ListItemContainer, StyledButton } from './SnackBar.styled'
 import useSnackBar from './useSnackBar'
@@ -33,7 +34,7 @@ const SnackBar5 = () => {
       <h2>스낵바</h2>
       <h3>
         #5. SnackBar
-        <sub>렌더링이 6번 일어나는 문제점을 해결한 스낵바</sub>
+        <sub>기존의 방식에서 존재하던 단점을 해결한 방법</sub>
       </h3>
       {data.map((item, index) => (
         <ListItem
@@ -42,6 +43,27 @@ const SnackBar5 = () => {
           index={index}
         />
       ))}
+      <UiExplanation>
+        <p>- 스낵바 네 번째 방법에서 존재하는 단점을 해결했습니다.</p>
+        <p>
+          - createRoot를 이용해 id가 &quot;snackBarRoot&quot; 인 컴포넌트를 따로
+          만들지 않아도 됩니다.
+        </p>
+        <p>- 스낵바가 show - hide - remove로 3번의 렌더링만 수행합니다.</p>
+
+        <br />
+
+        <h3>장점</h3>
+        <p>- 3번의 렌더링을 수행하는 점</p>
+        <p>
+          - 따로 id가 &quot;snackBarRoot&quot; 인 컴포넌트를 따로 만들지 않아도
+          됩니다.
+        </p>
+        <br />
+
+        <h3>단점</h3>
+        <p>- createRoot의 남용</p>
+      </UiExplanation>
     </>
   )
 }

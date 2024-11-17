@@ -24,8 +24,10 @@ const useTimeout = (fn: () => void, delay: number) => {
   const pause = useCallback(() => {
     if (timeoutId.current) {
       clearTimeout(timeoutId.current)
-      elapsedDuration.current += Date.now() - (startTime.current || Date.now())
-      startTime.current = null
+      if (startTime.current) {
+        elapsedDuration.current += Date.now() - startTime.current
+        startTime.current = null
+      }
     }
   }, [])
 
