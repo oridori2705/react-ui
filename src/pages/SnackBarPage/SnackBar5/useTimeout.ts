@@ -44,7 +44,7 @@ const useTimeout = (fn: () => void, delay: number) => {
     return clear
   }, [clear, run])
 
-  return { clear, pause, run } // run 함수도 반환
+  return { clear, pause, run }
 }
 
 export default useTimeout
