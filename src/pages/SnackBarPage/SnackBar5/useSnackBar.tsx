@@ -1,6 +1,14 @@
-import { ReactNode, useCallback, useState, useRef } from 'react'
+import {
+  ReactNode,
+  useCallback,
+  useState,
+  useRef,
+  useLayoutEffect
+} from 'react'
 import { createPortal } from 'react-dom'
 import SnackBarItem from '../SnackBar5/SnackBarItem'
+import { createRoot } from 'react-dom/client'
+import { SnackbarWrapper } from './SnackBar.styled'
 
 type SnackbarStatus = boolean
 
@@ -25,6 +33,8 @@ const useSnackBar = (
   const timeoutId = useRef<number | null>(null)
   const [status, setStatus] = useState<SnackbarStatus>(false)
   const [progressPaused, setProgressPaused] = useState(false)
+
+  const portalId = 'toast-portal'
 
   const elapsedDuration = useRef<number>(0)
   const startTime = useRef<number | null>(null)
@@ -58,6 +68,21 @@ const useSnackBar = (
       setTimeout(() => setStatus(false), 400)
     }, remainingTime)
   }
+
+  useLayoutEffect(() => {
+    if (typeof window !== 'undefined') {
+      const portalElement = document.getElementById(portalId)
+      if (!portalElement) {
+        const newPortalElement = document.createElement('div')
+        newPortalElement.id = portalId
+        document.body.appendChild(newPortalElement)
+
+        createRoot(newPortalElement).render(
+          <SnackbarWrapper id="snackbarRoot" />
+        )
+      }
+    }
+  }, [])
 
   return {
     snackbar: status

@@ -1,9 +1,5 @@
 import { data } from '../data'
-import {
-  ListItemContainer,
-  SnackbarWrapper,
-  StyledButton
-} from './SnackBar.styled'
+import { ListItemContainer, StyledButton } from './SnackBar.styled'
 import useSnackBar from './useSnackBar'
 
 const ListItem = ({
@@ -46,7 +42,6 @@ const SnackBar5 = () => {
           index={index}
         />
       ))}
-      <SnackbarWrapper id="snackbarRoot" />
     </>
   )
 }
