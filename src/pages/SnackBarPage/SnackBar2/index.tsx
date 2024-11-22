@@ -16,15 +16,11 @@ const ListItem = ({
   name: string
   index: number
 }) => {
-  const { snackbar, open } = useSnackBar(
-    <p>
-      {index + 1}. {name} 스낵바 알림
-    </p>
-  )
+  const { snackbar, open } = useSnackBar(<p>로그인되었습니다.</p>)
 
   return (
     <ListItemContainer id={id}>
-      #{index + 1} <StyledButton onClick={open}>스낵바 띄우기</StyledButton>
+      <StyledButton onClick={open}>스낵바 띄우기</StyledButton>
       {snackbar}
     </ListItemContainer>
   )
@@ -67,6 +63,10 @@ const Snackbar2 = () => {
           개발자가 인지해야 합니다.
         </p>
         <p>- 여전히 6번의 렌더링이 발생합니다.</p>
+        <p>
+          - useSnackBar가 반환한 snackBar 데이터를 꼭 JSX에 명시해야하는
+          번거로움이 있습니다.
+        </p>
       </UiExplanation>
     </>
   )
