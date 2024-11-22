@@ -123,25 +123,3 @@ const useSnackBar = (
 }
 
 export default useSnackBar
-
-// if (typeof window !== 'undefined') {
-//   const portalElement = document.getElementById(portalId)
-//   if (!portalElement) {
-//     const newPortalElement = document.createElement('div')
-//     newPortalElement.id = portalId
-//     newPortalElement.style.position = 'fixed'
-//     newPortalElement.style.bottom = '0'
-//     newPortalElement.style.left = '10%'
-//     newPortalElement.style.marginBottom = '24px'
-//     newPortalElement.style.display = 'flex'
-//     newPortalElement.style.flexDirection = 'column'
-//     newPortalElement.style.alignItems = 'center'
-//     newPortalElement.style.zIndex = '100'
-
-//     document.body.appendChild(newPortalElement)
-
-//     createRoot(newPortalElement).render(
-//       <SnackbarWrapper id="snackbarRoot" />
-//     )
-//   }
-// }
