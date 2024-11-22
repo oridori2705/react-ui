@@ -16,7 +16,11 @@ const ListItem = ({
   name: string
   index: number
 }) => {
-  const { snackbar, open } = useSnackBar(<p>로그인되었습니다.</p>)
+  const { snackbar, open } = useSnackBar(
+    <p>
+      {index + 1} . {name}로그인되었습니다.
+    </p>
+  )
 
   return (
     <ListItemContainer id={id}>

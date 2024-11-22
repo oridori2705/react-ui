@@ -2,6 +2,7 @@ import UiExplanation from '@/components/UiExplanation'
 import { data } from '../data'
 import { ListItemContainer, StyledButton } from './SnackBar.styled'
 import useSnackBar from './useSnackBar'
+import { StyledCode } from '@/components/UiExplanation/UiExplanation.styled'
 
 const ListItem = ({
   id,
@@ -46,8 +47,8 @@ const SnackBar5 = () => {
       <UiExplanation>
         <p>- 스낵바 네 번째 방법에서 존재하는 단점을 해결했습니다.</p>
         <p>
-          - createRoot를 이용해 id가 &quot;snackBarRoot&quot; 인 컴포넌트를 따로
-          만들지 않아도 됩니다.
+          - <StyledCode>document.body.appendChild() </StyledCode>이용해 id가
+          &quot;snackBarRoot&quot; 인 컴포넌트를 따로 만들지 않아도 됩니다.
         </p>
         <p>- 스낵바가 show - hide - remove로 3번의 렌더링만 수행합니다.</p>
 
@@ -62,7 +63,7 @@ const SnackBar5 = () => {
         <br />
 
         <h3>단점</h3>
-        <p>- createRoot의 남용</p>
+        <p>- SnackBarWrapper를 생성하는 코드에서 보이는 명령형 프로그래밍</p>
       </UiExplanation>
     </>
   )
