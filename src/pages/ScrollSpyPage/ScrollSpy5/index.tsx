@@ -3,26 +3,23 @@ import data from '../data'
 import ScrollSpy, { RenderNavProps } from './ScrollSpyComponent'
 import { Title, TitleSub } from '../ScrollSpy1/ScrollSpy.styled'
 
-const ScrollSpy4 = () => {
+const ScrollSpy5 = () => {
   return (
     <div>
       <Title>
-        #4. ScrollSpy
+        #5. ScrollSpy
         <TitleSub>
-          IntersectionObserver 방식 + Render Props 패턴을 이용해 Nav를
-          범용성있게 스타일링 및 사용 가능한 방법
+          IntersectionObserver 방식 + Render Props 패턴 활용, 불필요한
+          DefaultNavRender 제거
         </TitleSub>
       </Title>
-      <ScrollSpy
-        renderNav={customNavRender} // 생략하면 기본 네비게이션 사용
-      >
+      <ScrollSpy renderNav={customNavRender}>
         <ScrollSpy.UList>
           {data.map(item => (
             <ScrollSpy.ListItem
               key={item.id}
               ItemId={item.id}
-              scrollIndex={item.index}
-              title={item.title}>
+              scrollIndex={item.index}>
               <ListItem
                 {...item}
                 number={item.index + 1}
@@ -35,7 +32,7 @@ const ScrollSpy4 = () => {
   )
 }
 
-export default ScrollSpy4
+export default ScrollSpy5
 
 const customNavRender = ({
   currentIndex,

@@ -5,17 +5,26 @@ export const NavContainer = styled.div`
   position: sticky;
   width: 100%;
   box-sizing: border-box;
-  top: -60px;
+  top: 0px;
 `
 
 export const Title = styled.h3`
+  display: flex;
   margin: 0;
   padding: 0 20px;
   height: 60px;
   font-size: 1.5rem;
   line-height: 60px;
   top: 0;
+  white-space: nowrap;
   background-color: #f0f0f0;
+`
+
+export const TitleSub = styled.sub`
+  width: calc(100vw - 150px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 
 export const Nav = styled.ul`

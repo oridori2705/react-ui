@@ -1,3 +1,4 @@
+import { Title, TitleSub } from '../ScrollSpy1/ScrollSpy.styled'
 import data from '../data'
 import ScrollSpy from './ScrollSpyComponent'
 
@@ -28,22 +29,27 @@ const ListItem = ({
 
 const ScrollSpy1 = () => {
   return (
-    <ScrollSpy>
-      <ScrollSpy.UList>
-        {data.map(item => (
-          <ScrollSpy.ListItem
-            key={item.id}
-            ItemId={item.id}
-            title={item.title}
-            scrollIndex={item.index}>
-            <ListItem
-              {...item}
-              number={item.index + 1}
-            />
-          </ScrollSpy.ListItem>
-        ))}
-      </ScrollSpy.UList>
-    </ScrollSpy>
+    <div>
+      <Title>
+        #2. ScrollSpy<TitleSub>IntersectionObserver를 활용한 방법</TitleSub>
+      </Title>
+      <ScrollSpy>
+        <ScrollSpy.UList>
+          {data.map(item => (
+            <ScrollSpy.ListItem
+              key={item.id}
+              ItemId={item.id}
+              title={item.title}
+              scrollIndex={item.index}>
+              <ListItem
+                {...item}
+                number={item.index + 1}
+              />
+            </ScrollSpy.ListItem>
+          ))}
+        </ScrollSpy.UList>
+      </ScrollSpy>
+    </div>
   )
 }
 export default ScrollSpy1

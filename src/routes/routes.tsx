@@ -34,6 +34,12 @@ import ScrollSpy2 from '@/pages/ScrollSpyPage/ScrollSpy2'
 import ScrollSpy1 from '@/pages/ScrollSpyPage/ScrollSpy1'
 import ScrollSpy3 from '@/pages/ScrollSpyPage/ScrollSpy3'
 import ScrollSpy4 from '@/pages/ScrollSpyPage/ScrollSpy4'
+import ScrollSpy5 from '@/pages/ScrollSpyPage/ScrollSpy5'
+import SnackBar1 from '@/pages/SnackBarPage/SnackBar1'
+import SnackBar2 from '@/pages/SnackBarPage/SnackBar2'
+import SnackBar3 from '@/pages/SnackBarPage/SnackBar3'
+import SnackBar4 from '@/pages/SnackBarPage/SnackBar4'
+import SnackBar5 from '@/pages/SnackBarPage/SnackBar5'
 
 export const router = createBrowserRouter([
   {
@@ -167,6 +173,30 @@ export const router = createBrowserRouter([
       {
         path: '/scroll-spy/4_r',
         element: <ScrollSpy4 />
+      },
+      {
+        path: '/scroll-spy/5_r',
+        element: <ScrollSpy5 />
+      },
+      {
+        path: '/snack-bar/1_r',
+        element: <SnackBar1 />
+      },
+      {
+        path: '/snack-bar/2_r',
+        element: <SnackBar2 />
+      },
+      {
+        path: '/snack-bar/3_r',
+        element: <SnackBar3 />
+      },
+      {
+        path: '/snack-bar/4_r',
+        element: <SnackBar4 />
+      },
+      {
+        path: '/snack-bar/5_r',
+        element: <SnackBar5 />
       }
     ]
   }
@@ -213,7 +243,14 @@ export const routePaths = [
   '/scroll-spy/1_r',
   '/scroll-spy/2_r',
   '/scroll-spy/3_r',
-  '/scroll-spy/4_r'
+  '/scroll-spy/4_r',
+  '/scroll-spy/5_r',
+  '/snack-bar',
+  '/snack-bar/1_r',
+  '/snack-bar/2_r',
+  '/snack-bar/3_r',
+  '/snack-bar/4_r',
+  '/snack-bar/5_r'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -245,7 +282,8 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
       '/lazy-image',
       '/infinity-scroll',
       '/horizontal-scroll-box',
-      '/scroll-spy'
+      '/scroll-spy',
+      '/snack-bar'
     ]
   },
   '/accordion': {
@@ -486,7 +524,8 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
       '/scroll-spy/1_r',
       '/scroll-spy/2_r',
       '/scroll-spy/3_r',
-      '/scroll-spy/4_r'
+      '/scroll-spy/4_r',
+      '/scroll-spy/5_r'
     ]
   },
   '/scroll-spy/1_r': {
@@ -512,6 +551,55 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     link: '/scroll-spy/4_r',
     name: '스크롤 스파이 네 번째 방법',
     children: ScrollSpy4
+  },
+  '/scroll-spy/5_r': {
+    key: '/scroll-spy/5_r',
+    link: '/scroll-spy/5_r',
+    name: '스크롤 스파이 다섯 번째 방법',
+    children: ScrollSpy5
+  },
+  '/snack-bar': {
+    key: '/snack-bar',
+    link: '/snack-bar/1_r',
+    name: '08. 스낵바',
+    children: [
+      '/snack-bar/1_r',
+      '/snack-bar/2_r',
+      '/snack-bar/3_r',
+      '/snack-bar/4_r',
+      '/snack-bar/5_r'
+    ]
+  },
+  '/snack-bar/1_r': {
+    key: '/snack-bar/1_r',
+    link: '/snack-bar/1_r',
+    name: '스낵바 첫 번째 방법',
+    children: SnackBar1
+  },
+  '/snack-bar/2_r': {
+    key: '/snack-bar/2_r',
+    link: '/snack-bar/2_r',
+    name: '스낵바 두 번째 방법',
+    children: SnackBar2
+  },
+  '/snack-bar/3_r': {
+    key: '/snack-bar/3_r',
+    link: '/snack-bar/3_r',
+    name: '스낵바 세 번째 방법',
+    children: SnackBar3
+  },
+
+  '/snack-bar/4_r': {
+    key: '/snack-bar/4_r',
+    link: '/snack-bar/4_r',
+    name: '스낵바 네 번째 방법',
+    children: SnackBar4
+  },
+  '/snack-bar/5_r': {
+    key: '/snack-bar/5_r',
+    link: '/snack-bar/5_r',
+    name: '스낵바 다섯 번째 방법',
+    children: SnackBar5
   }
 }
 

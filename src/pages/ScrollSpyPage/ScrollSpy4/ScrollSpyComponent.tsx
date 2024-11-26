@@ -9,12 +9,7 @@ import {
   useRef,
   useState
 } from 'react'
-import {
-  Nav,
-  NavContainer,
-  NavItem,
-  Title
-} from '../ScrollSpy1/ScrollSpy.styled'
+import { Nav, NavContainer, NavItem } from '../ScrollSpy1/ScrollSpy.styled'
 import { ListItem, UList } from '../ScrollSpy1/DefaultComponent'
 import useIntersectionObserver from '@/pages/HorizontalScrollBoxPage/HorizontalScrollBox1/useIntersectionObserver'
 import { PageLayout } from './ScrollSpyNav.styled'
@@ -46,6 +41,16 @@ const ScrollSpyComponent = ({ children, renderNav }: ScrollSpyProps) => {
   const titleRefs = useRef<string[]>([])
   const containerRef = useRef<HTMLDivElement>(null)
   const { entries } = useIntersectionObserver(itemsRef, IOOptions)
+
+  if (renderNav) {
+    const renderNavString = renderNav.toString()
+    const requiredProps = ['currentIndex', 'navsRef', 'onNavClick']
+    requiredProps.forEach(prop => {
+      if (!renderNavString.includes(prop)) {
+        throw new Error(`renderNav는 꼭 ${prop} prop을 사용해야합니다!`)
+      }
+    })
+  }
 
   if (children.type !== UList) {
     throw new Error(
@@ -128,9 +133,6 @@ const ScrollSpyComponent = ({ children, renderNav }: ScrollSpyProps) => {
     onNavClick
   }: RenderNavProps) => (
     <NavContainer>
-      <Title>
-        #1. React<sub>scroll event</sub>
-      </Title>
       <Nav>
         {titleRefs.current.map((title, index) => (
           <NavItem
