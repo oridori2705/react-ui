@@ -1,6 +1,6 @@
 import { ReactNode, SyntheticEvent } from 'react'
 import { useSetModals } from './ModalContext'
-import Modal from './ModalComponent'
+import Modal from './Modal'
 
 export const AlertModal = ({ id, text }: { id: string; text: string }) => {
   const { closeModal } = useSetModals()

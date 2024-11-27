@@ -48,6 +48,11 @@ const GlobalStyle = () => css`
   ul {
     list-style: none;
   }
+  body {
+    &.no-scroll {
+      overflow: hidden;
+    }
+  }
 
   button {
     background-color: #4caf50;

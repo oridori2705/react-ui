@@ -4,9 +4,9 @@ import { AlertTrigger, ConfirmTrigger, FormTrigger } from './ModalTrigger'
 const Modal1 = () => {
   return (
     <ModalContextProvider>
-      <h2>모달</h2>
+      <h2>Modal</h2>
       <h3>
-        #1. React<sub>context API를 이용한 방법법</sub>
+        #1. React<sub>context API를 이용한 방법</sub>
       </h3>
       <Container>
         <AlertTrigger
@@ -32,6 +32,7 @@ const Modal1 = () => {
         </ConfirmTrigger>
         <FormTrigger id="7" />
       </Container>
+      <PlaceHolderDiv />
     </ModalContextProvider>
   )
 }
@@ -40,9 +41,12 @@ export default Modal1
 
 //단점: 상태 공유가 안됨, Provider 내부에서 사용해야 함
 //장점: 모달이 리스트로 관리돼서 Modal 갯수에 따른 설정하기가 편함
-
+//추가 기능: 모달 오픈 시 body 스크롤 방지
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
+`
+const PlaceHolderDiv = styled.div`
+  height: 3000px;
 `
