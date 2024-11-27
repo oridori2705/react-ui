@@ -4,30 +4,18 @@ import Modal from './Modal'
 import ModalRoot from './ModalRoot'
 
 const Modal2 = () => {
-  const { opened, openModal, closeModal } = useModal()
-  const [confirmed, setConfirmed] = useState<boolean | null>(null)
   return (
     <div>
       <h2>Modal</h2>
       <h3>
         #2. React<sub>CreatePortal + 커스텀 훅을 이용한 방법</sub>
       </h3>
-      <button onClick={openModal}>확인모달열기</button>
-      {confirmed ? '✅' : '❌'}
-      <ConfirmModal
-        opened={opened}
-        confirmed={confirmed}
-        onConfirm={() => {
-          setConfirmed(true)
-          closeModal()
-        }}
-        onCancel={() => {
-          setConfirmed(false)
-          closeModal()
-        }}
-        hide={closeModal}>
-        <p>확인/취소를 눌러주세요.</p>
-      </ConfirmModal>
+      <ConfirmTrigger>
+        <p> 1.중첩모달입니다.</p>
+        <ConfirmTrigger>
+          <p> 2.중첩모달입니다.</p>
+        </ConfirmTrigger>
+      </ConfirmTrigger>
 
       <ModalRoot />
     </div>
@@ -62,7 +50,7 @@ export const ConfirmModal = ({
       />
       <Modal.Content>{children}</Modal.Content>
       <p>
-        확인 유무:
+        현재 확인 유무:
         {confirmed ? '✅' : '❌'}
       </p>
       <Modal.Footer>
@@ -70,6 +58,35 @@ export const ConfirmModal = ({
         <button onClick={onCancel}>취소</button>
       </Modal.Footer>
     </Modal>
+  )
+}
+
+const ConfirmTrigger = ({ children }: { children: ReactNode }) => {
+  const { opened, openModal, closeModal } = useModal()
+  const [confirmed, setConfirmed] = useState<boolean | null>(null)
+
+  return (
+    <>
+      <button onClick={openModal}>모달 열기</button>
+      <p>
+        확인 유무:
+        {confirmed ? '✅' : '❌'}
+      </p>
+      <ConfirmModal
+        opened={opened}
+        confirmed={confirmed}
+        onConfirm={() => {
+          setConfirmed(true)
+          closeModal()
+        }}
+        onCancel={() => {
+          setConfirmed(false)
+          closeModal()
+        }}
+        hide={closeModal}>
+        {children}
+      </ConfirmModal>
+    </>
   )
 }
 
