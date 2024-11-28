@@ -31,6 +31,7 @@ export default Modal3
 //애니메이션가능하게 한 방법
 //사용 방식도 간단
 //따로 ModalRoot를 선언하지않아도 됨
+//ESC를 눌렀을 때 Modal이 닫힘
 //단점 : 만약 애니메이션을 수행하는 open,close 중에 state변화가 있으면 애니메이션이 나타나지 않음
 
 export const ConfirmModal = ({
