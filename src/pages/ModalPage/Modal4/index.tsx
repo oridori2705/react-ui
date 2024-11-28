@@ -8,7 +8,7 @@ const Modal4 = () => {
       <h2>Modal</h2>
       <h3>
         #3. React
-        <sub>Dialog 사용법</sub>
+        <sub>Dialog 사용법 + 애니메이션</sub>
       </h3>
       <ConfirmTrigger>
         <p> 1.중첩모달입니다.</p>

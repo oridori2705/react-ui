@@ -36,14 +36,7 @@ export const InnerContainer = styled.div<{ show: boolean }>`
   border-radius: 6px;
   background-color: #fff;
 
-  animation: ${({ show }) =>
-    show
-      ? css`
-          ${popIn} 0.5s ease
-        `
-      : css`
-          ${popOut} 0.5s ease
-        `};
+  animation: ${({ show }) => (show ? popIn : popOut)} 0.3s ease;
 `
 
 export const ModalHeaderContainer = styled.div`

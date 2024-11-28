@@ -1,8 +1,28 @@
+import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 
+const popIn = keyframes`
+  0% {
+    scale:0
+  }
+  100% {
+    scale:1
+  }
+
+`
+const popOut = keyframes`
+  0% {
+    scale:1
+  }
+  100% {
+    scale:0
+  }
+
+`
+
 export const StyledDialog = styled.dialog`
-  justify-content: center;
-  position: fixed;
+  display: block;
+  inset: 0;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   max-height: calc(100vh - 80px);
   max-width: calc(100vw - 80px);
@@ -11,18 +31,19 @@ export const StyledDialog = styled.dialog`
   border-radius: 6px;
   background-color: #fff;
   padding: 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
-  box-sizing: border-box;
+  transition: opacity 0.5s;
+  animation: ${popOut} 0.3s ease forwards;
 
   &::backdrop {
     backdrop-filter: blur(2px);
     background-color: rgba(0, 0, 0, 0.3);
   }
-
+  &[open] {
+    animation: ${popIn} 0.3s ease forwards;
+  }
   &:not([open]) {
-    display: none;
+    pointer-events: none;
+    opacity: 0;
   }
 `
