@@ -2,7 +2,6 @@ import { ReactNode, useState } from 'react'
 import { useSetModals } from './ModalContext'
 import { AlertModal, ConfirmModal, FormModal } from './ModalDefaultComponent'
 import { StyledButton } from '@/pages/SnackBarPage/SnackBar1/SnackBar.styled'
-
 export const AlertTrigger = ({ id, text }: { id: string; text: string }) => {
   const { openModal } = useSetModals()
 
@@ -17,7 +16,7 @@ export const AlertTrigger = ({ id, text }: { id: string; text: string }) => {
   }
   return (
     <div>
-      <StyledButton onClick={openAlertModal}>얼럿 띄우기</StyledButton>
+      <button onClick={openAlertModal}>얼럿 띄우기</button>
     </div>
   )
 }
@@ -41,11 +40,9 @@ export const ConfirmTrigger = ({
         confirmed={confirmed}
         onConfirm={() => {
           setConfirmed(true)
-          closeThis()
         }}
         onCancel={() => {
           setConfirmed(false)
-          closeThis()
         }}
         hide={closeThis}>
         {children}

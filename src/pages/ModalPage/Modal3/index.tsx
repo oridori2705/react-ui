@@ -1,6 +1,8 @@
 import { ReactNode, useState } from 'react'
 import useModal from './useModal'
 import Modal from './Modal'
+import { PlaceHolderDiv } from '../Modal1'
+import UiExplanation from '@/components/UiExplanation'
 
 const Modal3 = () => {
   return (
@@ -22,17 +24,40 @@ const Modal3 = () => {
           </ConfirmTrigger>
         </ConfirmTrigger>
       </ConfirmTrigger>
+      <UiExplanation>
+        <p>- Modal 두 번째 방법에서 존재하던 단점을 개선했습니다.</p>
+        <p>
+          - Modal 컴포넌트에서 애니메이션 상태 isAnimating을 하나 더 관리해
+          애니메이션이 정상적으로 보이도록 했습니다.
+        </p>
+        <p>- createPortal의 두 번째 인자를 document.body로 설정했습니다.</p>
+        <p>- ESC 키다운 시 모달이 닫히도록 했습니다.</p>
+        <br />
+        <h3>장점</h3>
+        <p>
+          - 애니메이션이 정상적으로 작동합니다. setTimeout이 아니므로 버그가 날
+          가능성이 적습니다.
+        </p>
+        <p>- 따로 ModalRoot를 호출하지 않아도 됩니다.</p>
+        <p>- ESC 키다운 기능을 추가해 사용자 경험을 높였습니다.</p>
+        <br />
+
+        <h3>단점</h3>
+        <p>
+          - 만약 애니메이션을 수행하는 open,close 중에 state변화가 있으면
+          애니메이션이 나타나지 않습니다.
+        </p>
+        <p>
+          - ex.모달이 닫히면서 useState의 상태가 변화하면 애니메이션이
+          동작하지않습니다.
+        </p>
+      </UiExplanation>
+      <PlaceHolderDiv />
     </div>
   )
 }
 
 export default Modal3
-
-//애니메이션가능하게 한 방법
-//사용 방식도 간단
-//따로 ModalRoot를 선언하지않아도 됨
-//ESC를 눌렀을 때 Modal이 닫힘
-//단점 : 만약 애니메이션을 수행하는 open,close 중에 state변화가 있으면 애니메이션이 나타나지 않음
 
 export const ConfirmModal = ({
   isOpen,

@@ -2,6 +2,8 @@ import { ReactNode, useState } from 'react'
 import useModal from './useModal'
 import Modal from './Modal'
 import ModalRoot from './ModalRoot'
+import { PlaceHolderDiv } from '../Modal1'
+import UiExplanation from '@/components/UiExplanation'
 
 const Modal2 = () => {
   return (
@@ -18,6 +20,25 @@ const Modal2 = () => {
       </ConfirmTrigger>
 
       <ModalRoot />
+      <UiExplanation>
+        <p>- CreatePortal + useModal 커스텀 훅을 이용해 구현했습니다.</p>
+        <p>- 사용법과 내부 로직이 간단합니다.</p>
+        <p>- 개발자가 따로 ModalRoot를 호출해 줘야 합니다.</p>
+        <br />
+        <h3>장점</h3>
+        <p>- 간단한 사용법과 내부 로직</p>
+        <p>- ContextAPI와 달리 상태가 실시간으로 공유됩니다.</p>
+        <br />
+
+        <h3>단점</h3>
+        <p>- ModalRoot를 호출해 줘야 합니다.</p>
+        <p>
+          - 사라지는 애니메이션을 적용하기가 까다롭습니다.(현재 사라지는
+          애니메이션은 적용이 안됨)
+        </p>
+        <p> - Modal의 열림/닫힘이 state로 관리되기 때문</p>
+      </UiExplanation>
+      <PlaceHolderDiv />
     </div>
   )
 }
@@ -89,6 +110,3 @@ const ConfirmTrigger = ({ children }: { children: ReactNode }) => {
     </>
   )
 }
-
-//단점: <ModalRoot/>로 Modal을 띄워줄 요소를 사용자가 직접 명시해야합니다. 사라지는 애니메이션을 적용하기가 까다롭습니다.
-//장점: 사용하기가 간단합니다.
