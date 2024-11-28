@@ -40,6 +40,10 @@ import SnackBar2 from '@/pages/SnackBarPage/SnackBar2'
 import SnackBar3 from '@/pages/SnackBarPage/SnackBar3'
 import SnackBar4 from '@/pages/SnackBarPage/SnackBar4'
 import SnackBar5 from '@/pages/SnackBarPage/SnackBar5'
+import Modal1 from '@/pages/ModalPage/Modal1'
+import Modal2 from '@/pages/ModalPage/Modal2'
+import Modal3 from '@/pages/ModalPage/Modal3'
+import Modal4 from '@/pages/ModalPage/Modal4'
 
 export const router = createBrowserRouter([
   {
@@ -197,6 +201,22 @@ export const router = createBrowserRouter([
       {
         path: '/snack-bar/5_r',
         element: <SnackBar5 />
+      },
+      {
+        path: '/modal/1_r',
+        element: <Modal1 />
+      },
+      {
+        path: '/modal/2_r',
+        element: <Modal2 />
+      },
+      {
+        path: '/modal/3_r',
+        element: <Modal3 />
+      },
+      {
+        path: '/modal/4_r',
+        element: <Modal4 />
       }
     ]
   }
@@ -250,7 +270,12 @@ export const routePaths = [
   '/snack-bar/2_r',
   '/snack-bar/3_r',
   '/snack-bar/4_r',
-  '/snack-bar/5_r'
+  '/snack-bar/5_r',
+  '/modal',
+  '/modal/1_r',
+  '/modal/2_r',
+  '/modal/3_r',
+  '/modal/4_r'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -283,7 +308,8 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
       '/infinity-scroll',
       '/horizontal-scroll-box',
       '/scroll-spy',
-      '/snack-bar'
+      '/snack-bar',
+      '/modal'
     ]
   },
   '/accordion': {
@@ -600,6 +626,36 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     link: '/snack-bar/5_r',
     name: '스낵바 다섯 번째 방법',
     children: SnackBar5
+  },
+  '/modal': {
+    key: '/modal',
+    link: '/modal/1_r',
+    name: '09. 모달',
+    children: ['/modal/1_r', '/modal/2_r', '/modal/3_r', '/modal/4_r']
+  },
+  '/modal/1_r': {
+    key: '/modal/1_r',
+    link: '/modal/1_r',
+    name: '모달 첫 번째 방법',
+    children: Modal1
+  },
+  '/modal/2_r': {
+    key: '/modal/2_r',
+    link: '/modal/2_r',
+    name: '모달 두 번째 방법',
+    children: Modal2
+  },
+  '/modal/3_r': {
+    key: '/modal/3_r',
+    link: '/modal/3_r',
+    name: '모달 세 번째 방법',
+    children: Modal3
+  },
+  '/modal/4_r': {
+    key: '/modal/4_r',
+    link: '/modal/4_r',
+    name: '모달 네 번째 방법',
+    children: Modal4
   }
 }
 
