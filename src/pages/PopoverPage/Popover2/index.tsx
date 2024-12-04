@@ -42,7 +42,7 @@ const Popover2 = () => {
       <div>
         <h2>팝오버</h2>
         <h3>
-          #1. React<sub>컨텐츠 내부에서 그대로 렌더링</sub>
+          #2. React<sub>CreatePortal을 이용한 방식</sub>
         </h3>
         <PopoverList>
           {data.map((item, index) => (
