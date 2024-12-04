@@ -41,7 +41,7 @@ const Popover3 = () => {
       <div>
         <h2>팝오버</h2>
         <h3>
-          #2. React
+          #3. React
           <sub>
             CreatePortal을 이용한 방식 + Context API를 사용하지 않는 방식
           </sub>
@@ -65,3 +65,4 @@ export default Popover3
 
 // useState로 ViewportRect를 계산했더니 6번의 렌더링이 발생한다. -> 요소가 나타날 때 잠깐 크기가 변해버려서 생기는 현상
 // 그래서 ref로만 viewportRect데이터를 관리하게 했습니다 -> 이로인해 스크롤하거나 resize시 실시간으로 위치가 변하지 않습니다.(리-렌더링이 발생해야 바뀜)
+// 그리고 Context API와 다르게 3번의 불필요한 렌더링이 발생합니다.(이 또한 외부 API값이기 때문에)

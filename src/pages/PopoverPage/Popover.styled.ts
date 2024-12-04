@@ -75,3 +75,47 @@ export const MenuItem = styled.li`
     background-color: #f0f0f0;
   }
 `
+
+export const MenuDialogContainer = styled.dialog`
+  position: absolute;
+  background-color: #fff;
+  border: 0;
+  border-radius: 5px;
+  z-index: 10;
+  padding: 0;
+  width: 160px;
+
+  &::backdrop {
+    background-color: transparent;
+  }
+
+  &:not([open]) {
+    display: none;
+  }
+`
+
+export const MenuDialogList = styled.ul`
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  list-style: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+`
+
+export const MenuDialogItem = styled.li`
+  padding: 10px 20px;
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+  transition: background-color ease-out 0.2s;
+  cursor: pointer;
+
+  &:first-of-type {
+    border-top: 0;
+  }
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+`
