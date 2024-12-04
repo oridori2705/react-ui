@@ -6,7 +6,7 @@ import {
   ProgressBarContainer,
   SnackbarItemContainer
 } from './SnackBar.styled'
-import useTimeout from './useTimeout'
+import useTimeout from '../../../hooks/useTimeout'
 import { Snackbar } from './useSnackBar'
 import { useState } from 'react'
 

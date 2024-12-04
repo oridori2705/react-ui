@@ -1,4 +1,4 @@
-import useIntersectionObserver from '@/pages/HorizontalScrollBoxPage/HorizontalScrollBox1/useIntersectionObserver'
+import useIntersectionObserver from '@/hooks/useIntersectionObserver'
 import {
   Children,
   ReactElement,

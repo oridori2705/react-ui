@@ -1,6 +1,6 @@
 import Spinner from '@/components/Spinner'
-import useInfiniteFetch, { Datum } from '../useInfiniteFetch'
-import useInfiniteScroll from '../useInfiniteScroll'
+import useInfiniteFetch, { Datum } from '../../../hooks/useInfiniteFetch'
+import useInfiniteScroll from '../../../hooks/useInfiniteScroll'
 import styled from '@emotion/styled'
 import { pickRandom, randomize, waitFor } from '@/utils/randomFn'
 import data from '../data'
