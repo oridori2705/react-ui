@@ -2,7 +2,7 @@ import { RefObject, useEffect, useRef, useState } from 'react'
 
 type Elem = Element | null
 
-const useIntersectionObserver = (
+const useIntersectionObserverArray = (
   elemRef: RefObject<Elem>,
   options: IntersectionObserverInit = { threshold: 0.5 }
 ) => {
@@ -27,4 +27,4 @@ const useIntersectionObserver = (
   }
 }
 
-export default useIntersectionObserver
+export default useIntersectionObserverArray

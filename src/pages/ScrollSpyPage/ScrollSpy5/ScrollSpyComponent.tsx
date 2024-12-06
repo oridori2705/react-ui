@@ -10,7 +10,7 @@ import {
   useState
 } from 'react'
 import { ListItem, UList } from './DefaultComponent'
-import useIntersectionObserver from '@/pages/HorizontalScrollBoxPage/HorizontalScrollBox1/useIntersectionObserver'
+import useIntersectionObserver from '@/hooks/useIntersectionObserver'
 import { PageLayout } from '../ScrollSpy4/ScrollSpyNav.styled'
 
 const HeaderHeight = 60

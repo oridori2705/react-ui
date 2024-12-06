@@ -44,6 +44,11 @@ import Modal1 from '@/pages/ModalPage/Modal1'
 import Modal2 from '@/pages/ModalPage/Modal2'
 import Modal3 from '@/pages/ModalPage/Modal3'
 import Modal4 from '@/pages/ModalPage/Modal4'
+import Popover1 from '@/pages/PopoverPage/Popover1'
+import Popover2 from '@/pages/PopoverPage/Popover2'
+import Popover3 from '@/pages/PopoverPage/Popover3'
+import Popover4 from '@/pages/PopoverPage/Popover4'
+import Popover5 from '@/pages/PopoverPage/Popover5'
 
 export const router = createBrowserRouter([
   {
@@ -217,6 +222,26 @@ export const router = createBrowserRouter([
       {
         path: '/modal/4_r',
         element: <Modal4 />
+      },
+      {
+        path: 'popover/1_r',
+        element: <Popover1 />
+      },
+      {
+        path: 'popover/2_r',
+        element: <Popover2 />
+      },
+      {
+        path: 'popover/3_r',
+        element: <Popover3 />
+      },
+      {
+        path: 'popover/4_r',
+        element: <Popover4 />
+      },
+      {
+        path: 'popover/5_r',
+        element: <Popover5 />
       }
     ]
   }
@@ -275,7 +300,13 @@ export const routePaths = [
   '/modal/1_r',
   '/modal/2_r',
   '/modal/3_r',
-  '/modal/4_r'
+  '/modal/4_r',
+  '/popover',
+  '/popover/1_r',
+  '/popover/2_r',
+  '/popover/3_r',
+  '/popover/4_r',
+  '/popover/5_r'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -309,7 +340,8 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
       '/horizontal-scroll-box',
       '/scroll-spy',
       '/snack-bar',
-      '/modal'
+      '/modal',
+      '/popover'
     ]
   },
   '/accordion': {
@@ -656,6 +688,48 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     link: '/modal/4_r',
     name: '모달 네 번째 방법',
     children: Modal4
+  },
+  '/popover': {
+    key: '/popover',
+    link: '/popover/1_r',
+    name: '09. 팝오버',
+    children: [
+      '/popover/1_r',
+      '/popover/2_r',
+      '/popover/3_r',
+      '/popover/4_r',
+      '/popover/5_r'
+    ]
+  },
+  '/popover/1_r': {
+    key: '/popover/1_r',
+    link: '/popover/1_r',
+    name: '팝오버 첫 번째 방법',
+    children: Popover1
+  },
+  '/popover/2_r': {
+    key: '/popover/2_r',
+    link: '/popover/2_r',
+    name: '팝오버 두 번째 방법',
+    children: Popover2
+  },
+  '/popover/3_r': {
+    key: '/popover/3_r',
+    link: '/popover/3_r',
+    name: '팝오버 세 번째 방법',
+    children: Popover3
+  },
+  '/popover/4_r': {
+    key: '/popover/4_r',
+    link: '/popover/4_r',
+    name: '팝오버 네 번째 방법',
+    children: Popover4
+  },
+  '/popover/5_r': {
+    key: '/popover/5_r',
+    link: '/popover/5_r',
+    name: '팝오버 다섯 번째 방법',
+    children: Popover4
   }
 }
 

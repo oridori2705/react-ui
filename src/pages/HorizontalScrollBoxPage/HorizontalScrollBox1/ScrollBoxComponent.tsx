@@ -16,7 +16,7 @@ import {
   ScrollBoxContainer,
   UlContainer
 } from './HorizontalScrollBox.styled'
-import useIntersectionObserver from './useIntersectionObserver'
+import useIntersectionObserver from '../../../hooks/useIntersectionObserver'
 
 type Direction = 'prev' | 'next'
 type ItemElemType = HTMLLIElement | null

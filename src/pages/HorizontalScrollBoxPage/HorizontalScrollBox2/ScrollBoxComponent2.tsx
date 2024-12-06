@@ -1,6 +1,6 @@
 import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 import { Wrapper } from './DefaultComponent'
-import useIntersectionObserver from '../HorizontalScrollBox1/useIntersectionObserver'
+import useIntersectionObserver from '../../../hooks/useIntersectionObserver'
 import {
   GradientOverlay,
   NextNavButton,

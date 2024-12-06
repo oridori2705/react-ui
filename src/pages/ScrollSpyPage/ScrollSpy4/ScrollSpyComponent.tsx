@@ -11,7 +11,7 @@ import {
 } from 'react'
 import { Nav, NavContainer, NavItem } from '../ScrollSpy1/ScrollSpy.styled'
 import { ListItem, UList } from '../ScrollSpy1/DefaultComponent'
-import useIntersectionObserver from '@/pages/HorizontalScrollBoxPage/HorizontalScrollBox1/useIntersectionObserver'
+import useIntersectionObserver from '@/hooks/useIntersectionObserver'
 import { PageLayout } from './ScrollSpyNav.styled'
 
 const HeaderHeight = 60

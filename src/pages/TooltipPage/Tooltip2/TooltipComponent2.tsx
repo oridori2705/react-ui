@@ -1,7 +1,7 @@
 import { FocusEvent, MouseEvent, useEffect, useRef, useState } from 'react'
 import { TooltipProps } from '../Tooltip1/types'
 import { TooltipContent, TooltipWrapper } from '../Tooltip1/Tooltip1.styled'
-import useStyleInView from '../../../hooks/viewport/useStyleInView'
+import useStyleInView1 from '../../../hooks/viewport/useStyleInView1'
 
 const Tooltip = ({
   children,
@@ -12,7 +12,7 @@ const Tooltip = ({
 }: TooltipProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const targetRef = useRef<HTMLDivElement>(null)
-  const viewportDirection = useStyleInView(wrapperRef, targetRef, direction)
+  const viewportDirection = useStyleInView1(wrapperRef, targetRef, direction)
 
   const [isOpen, setIsOpen] = useState(false)
 
