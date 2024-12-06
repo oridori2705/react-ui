@@ -7,8 +7,6 @@ import {
 } from 'react'
 import { createPortal } from 'react-dom'
 import SnackBarItem from '../SnackBar5/SnackBarItem'
-import { createRoot } from 'react-dom/client'
-import { SnackbarWrapper } from './SnackBar.styled'
 
 type SnackbarStatus = boolean
 
@@ -93,9 +91,6 @@ const useSnackBar = (
         newPortalElement.style.alignItems = 'center'
         newPortalElement.style.zIndex = '100'
         document.body.appendChild(newPortalElement)
-        createRoot(newPortalElement).render(
-          <SnackbarWrapper id="snackbarRoot" />
-        )
       }
       setPortalReady(true)
     }
