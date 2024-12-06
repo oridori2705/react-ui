@@ -1,8 +1,14 @@
 import { MouseEvent, useRef, useState } from 'react'
 import MenuPopover from './MenuPopover'
-import ViewportContextProvider from '@/hooks/viewport/ViewportContext'
 import { data } from '../data'
-import { PopoverButton, PopoverList, PopoverListItem } from '../Popover.styled'
+import {
+  MenuDialogItem,
+  MenuDialogList,
+  PopoverButton,
+  PopoverList,
+  PopoverListItem
+} from '../Popover.styled'
+import UiExplanation from '@/components/UiExplanation'
 
 const ListItem = ({
   id,
@@ -38,23 +44,30 @@ const ListItem = ({
         ref={buttonRef}
       />
       <MenuPopover
-        id={index + 1 + ''}
         close={closeDialog}
         wrapperRef={buttonRef}
         dialogRef={dialogRef}
-        opened={opened}
-      />
+        opened={opened}>
+        <MenuDialogList onClick={e => e.stopPropagation()}>
+          <MenuDialogItem>#{id}</MenuDialogItem>
+          <MenuDialogItem>스레드의 댓글</MenuDialogItem>
+          <MenuDialogItem>메시지 전달</MenuDialogItem>
+          <MenuDialogItem>나중을 위해 저장</MenuDialogItem>
+          <MenuDialogItem>읽지 않음으로 표시</MenuDialogItem>
+          <MenuDialogItem>삭제</MenuDialogItem>
+        </MenuDialogList>
+      </MenuPopover>
     </PopoverListItem>
   )
 }
 
-const Popover3 = () => {
+const Popover4 = () => {
   return (
-    <ViewportContextProvider>
+    <>
       <div>
         <h2>팝오버</h2>
         <h3>
-          #3. React<sub>Dialog를 이용한 방식</sub>
+          #4. React<sub>Dialog를 이용한 방식</sub>
         </h3>
         <PopoverList>
           {data.map((item, index) => (
@@ -66,14 +79,30 @@ const Popover3 = () => {
           ))}
         </PopoverList>
       </div>
-    </ViewportContextProvider>
+      <UiExplanation>
+        <p>- dialog를 이용해 popover를 구현한 방식입니다.</p>
+        <p>- 이 또한 두 번째 방법과 동일하게 절대 위치로 style이 계산됩니다.</p>
+
+        <br />
+        <h3>장점</h3>
+        <p>- 따로 조건부렌더링과 같은 처리가 필요하지 않습니다.</p>
+        <br />
+
+        <h3>단점</h3>
+        <p>- dialog.show가 아닌 dialog.showModal을 사용했습니다.</p>
+        <p>- Modal과 같은 open, close 처리 함수가 필요합니다.</p>
+        <p>
+          - dialog는 DOM트리에 계속 존재하므로 useStyleInView로 계산되는
+          스타일이 처음에 빈값으로 고정되는 문제가 있습니다.
+        </p>
+        <p>
+          -{'>'}이로인해 popover가 열렸을 때 style을 다시 계산하도록
+          useStyleInView의 needUpdate 매개변수를 사용해줘야 합니다.
+        </p>
+        <p>- 여전히 popover 내부 요소를 수정할 수 없습니다.</p>
+      </UiExplanation>
+    </>
   )
 }
 
-export default Popover3
-
-//기존에 dialog에 존재하는 dialog.show를 이용하려했지만 show메서드는 backdrop이 없는 문제와 좌표수정이 어렵고, overflow:hidden에 대응하기 어려워 적합하지 않다고 판단했습니다.
-//그래서 showModal() 메서드로 활용하는 방법을 선택했습니다.
-
-//1) 좌표 계산이 어렵지만, overflow:hidden에서 자유롭기 위해서는 결국 absolute 타입이 나은 것 같습니다.
-//2) popover에는 dialog show 메소드를 쓰기에 적합하지 않은 듯 합니다.
+export default Popover4

@@ -1,7 +1,7 @@
-import useStyleInView3 from '@/hooks/viewport/useStyleInView3'
 import { ReactNode, RefObject, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { MenuPopoverContainer, MenuPopoverOverlay } from '../Popover.styled'
+import useStyleInView4 from '@/hooks/viewport/useStyleInView4'
 
 const menuPosition = {
   top: -4,
@@ -22,7 +22,7 @@ const MenuPopover = ({
   children: ReactNode
 }) => {
   const targetRef = useRef<HTMLUListElement>(null)
-  const style = useStyleInView3(
+  const style = useStyleInView4(
     wrapperRef,
     targetRef,
     menuPosition,

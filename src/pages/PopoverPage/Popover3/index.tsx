@@ -3,6 +3,7 @@ import { useRef, useState } from 'react'
 import { data } from '../data'
 import { PopoverButton, PopoverList, PopoverListItem } from '../Popover.styled'
 import MenuPopover from './MenuPopover'
+import UiExplanation from '@/components/UiExplanation'
 
 const ListItem = ({
   id,
@@ -57,12 +58,32 @@ const Popover3 = () => {
         </PopoverList>
       </div>
       <div id="popoverRoot" />
+      <UiExplanation>
+        <p>
+          - CreatePortal을 이용한 방법에서 useStyleInView를 Context API가 아닌
+          커스텀 훅으로 교체한 방식을 사용했습니다.
+        </p>
+        <p>
+          - Provider를 사용해야하는 번거로움을 해소하기 위해 구현해봤습니다.
+        </p>
+
+        <br />
+        <h3>장점</h3>
+        <p>- Provider를 사용하지 않아도 됩니다.</p>
+        <br />
+
+        <h3>단점</h3>
+        <p>
+          - style값을 ref로 저장하기 떄문에 style의 위치가 실시간으로 변하지
+          않습니다.(popover를 연 상태에서 스크롤이나 resize시 위치가 실시간으로
+          변하지 않음)
+        </p>
+        <p>- 여전히 Portal할 div 요소를 만들어줘야 함</p>
+        <p>- 여전히 popover 내부 요소를 수정할 수 없음</p>
+        <p>- popover를 열 때 3번의 렌더링을 하게됩니다.</p>
+      </UiExplanation>
     </>
   )
 }
 
 export default Popover3
-
-// useState로 ViewportRect를 계산했더니 6번의 렌더링이 발생한다. -> 요소가 나타날 때 잠깐 크기가 변해버려서 생기는 현상
-// 그래서 ref로만 viewportRect데이터를 관리하게 했습니다 -> 이로인해 스크롤하거나 resize시 실시간으로 위치가 변하지 않습니다.(리-렌더링이 발생해야 바뀜)
-// 그리고 Context API와 다르게 3번의 불필요한 렌더링이 발생합니다.(이 또한 외부 API값이기 때문에)

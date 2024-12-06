@@ -16,31 +16,36 @@ const menuPosition = {
 
 const MenuPopover = ({
   id,
+  opened,
   close,
   wrapperRef
 }: {
   id: string
+  opened: boolean
   close: () => void
   wrapperRef: RefObject<HTMLElement>
 }) => {
   const targetRef = useRef<HTMLUListElement>(null)
   const style = useStyleInView4(wrapperRef, targetRef, menuPosition, 'absolute')
 
-  return createPortal(
-    <MenuPopoverOverlay onClick={close}>
-      <MenuPopoverContainer
-        onClick={e => e.stopPropagation()}
-        ref={targetRef}
-        style={style}>
-        <li>#{id}</li>
-        <MenuItem>스레드의 댓글</MenuItem>
-        <MenuItem>메시지 전달</MenuItem>
-        <MenuItem>나중을 위해 저장</MenuItem>
-        <MenuItem>읽지 않음으로 표시</MenuItem>
-        <MenuItem>삭제</MenuItem>
-      </MenuPopoverContainer>
-    </MenuPopoverOverlay>,
-    document.querySelector('#popoverRoot')!
+  return (
+    opened &&
+    createPortal(
+      <MenuPopoverOverlay onClick={close}>
+        <MenuPopoverContainer
+          onClick={e => e.stopPropagation()}
+          ref={targetRef}
+          style={style}>
+          <li>#{id}</li>
+          <MenuItem>스레드의 댓글</MenuItem>
+          <MenuItem>메시지 전달</MenuItem>
+          <MenuItem>나중을 위해 저장</MenuItem>
+          <MenuItem>읽지 않음으로 표시</MenuItem>
+          <MenuItem>삭제</MenuItem>
+        </MenuPopoverContainer>
+      </MenuPopoverOverlay>,
+      document.querySelector('#popoverRoot')!
+    )
   )
 }
 
