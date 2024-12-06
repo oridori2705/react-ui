@@ -48,6 +48,7 @@ import Popover1 from '@/pages/PopoverPage/Popover1'
 import Popover2 from '@/pages/PopoverPage/Popover2'
 import Popover3 from '@/pages/PopoverPage/Popover3'
 import Popover4 from '@/pages/PopoverPage/Popover4'
+import Popover5 from '@/pages/PopoverPage/Popover5'
 
 export const router = createBrowserRouter([
   {
@@ -237,6 +238,10 @@ export const router = createBrowserRouter([
       {
         path: 'popover/4_r',
         element: <Popover4 />
+      },
+      {
+        path: 'popover/5_r',
+        element: <Popover5 />
       }
     ]
   }
@@ -300,7 +305,8 @@ export const routePaths = [
   '/popover/1_r',
   '/popover/2_r',
   '/popover/3_r',
-  '/popover/4_r'
+  '/popover/4_r',
+  '/popover/5_r'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -687,7 +693,13 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: '/popover',
     link: '/popover/1_r',
     name: '09. 팝오버',
-    children: ['/popover/1_r', '/popover/2_r', '/popover/3_r', '/popover/4_r']
+    children: [
+      '/popover/1_r',
+      '/popover/2_r',
+      '/popover/3_r',
+      '/popover/4_r',
+      '/popover/5_r'
+    ]
   },
   '/popover/1_r': {
     key: '/popover/1_r',
@@ -711,6 +723,12 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: '/popover/4_r',
     link: '/popover/4_r',
     name: '팝오버 네 번째 방법',
+    children: Popover4
+  },
+  '/popover/5_r': {
+    key: '/popover/5_r',
+    link: '/popover/5_r',
+    name: '팝오버 다섯 번째 방법',
     children: Popover4
   }
 }
