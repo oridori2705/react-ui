@@ -19,7 +19,6 @@ export const ImageList = styled.ul<{ moveLeft: number }>`
   padding: 0;
   margin: 0;
   left: ${({ moveLeft }) => `${moveLeft}px`};
-  transition: left ease-out 0.5s;
 `
 
 export const ImageItem = styled.li`
@@ -107,10 +106,10 @@ export const NavRight = styled(NavButton)`
   }
 `
 
-export const ImageSlide1Container = styled(ImageList)`
+export const ImageSlide1Ul = styled(ImageList)`
   transition: left ease-out 0.5s;
 `
 
-export const ImageSlideItem = styled(ImageItem)`
-  scroll-snap-align: start;
+export const ImageSlide4 = styled.div`
+  height: 360px;
 `

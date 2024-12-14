@@ -1,11 +1,11 @@
 import { useCallback, useRef, useState } from 'react'
 import {
   ImageItem,
-  ImageSlide1Container,
+  ImageSlide1Ul,
   ImageSlideContainer,
   NavLeft,
   NavRight
-} from './ImageSlide.styled'
+} from './ImageSlide1.styled'
 import LazyImageComponent1 from '@/pages/LazyImagePage/LazyImage1/LazyImageComponent1'
 import data from '../data'
 
@@ -14,7 +14,6 @@ const dataLength = data.length
 
 const ImageSlide1 = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
-
   const animatingRef = useRef(false)
 
   const move = useCallback(
@@ -38,8 +37,13 @@ const ImageSlide1 = () => {
 
   return (
     <div>
+      <h3>
+        #1. 이미지 슬라이드
+        <sub> React에서 기본적인 이미지 슬라이드 구현</sub>
+      </h3>
+
       <ImageSlideContainer>
-        <ImageSlide1Container
+        <ImageSlide1Ul
           moveLeft={currentIndex * 600 * -1}
           onTransitionEnd={handleTransitionEnd}>
           {data.map((url, index) => (
@@ -52,7 +56,7 @@ const ImageSlide1 = () => {
               <span>#{index + 1}</span>
             </ImageItem>
           ))}
-        </ImageSlide1Container>
+        </ImageSlide1Ul>
         <NavLeft onClick={move('left')} />
         <NavRight onClick={move('right')} />
       </ImageSlideContainer>
