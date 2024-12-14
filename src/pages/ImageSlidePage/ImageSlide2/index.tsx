@@ -5,28 +5,30 @@ import {
   NavRight
 } from '../ImageSlide1/ImageSlide1.styled'
 import data from '../data'
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useRef } from 'react'
 import { ImageItem3, ImageSlide3Ul } from './ImageSlide2.styled'
 
 type Direction = 'left' | 'right'
-const dataLength = data.length
 
 const ImageSlide2 = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
   const containerRef = useRef<HTMLUListElement>(null)
+  const imageWidth = 600
 
   const move = useCallback(
     (direction: Direction) => () => {
-      setCurrentIndex(prev => {
-        const next =
-          ((direction === 'right' ? prev + 1 : prev - 1) + dataLength) %
-          dataLength
-        containerRef.current!.scrollTo({
-          left: next * 600,
+      if (containerRef.current) {
+        const container = containerRef.current
+        const scrollPosition = container.scrollLeft
+        const nextScrollPosition =
+          direction === 'right'
+            ? scrollPosition + imageWidth
+            : scrollPosition - imageWidth
+
+        container.scrollTo({
+          left: nextScrollPosition,
           behavior: 'smooth'
         })
-        return next
-      })
+      }
     },
     []
   )
