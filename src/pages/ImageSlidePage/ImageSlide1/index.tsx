@@ -22,7 +22,9 @@ const ImageSlide1 = () => {
       if (animatingRef.current) return
 
       setCurrentIndex(prev => {
-        const next = (direction === 'right' ? prev + 1 : prev - 1) % dataLength
+        const next =
+          (direction === 'right' ? prev + 1 : prev - 1 + data.length) %
+          dataLength
         animatingRef.current = true
         return next
       })
