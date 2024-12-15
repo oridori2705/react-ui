@@ -49,6 +49,9 @@ import Popover2 from '@/pages/PopoverPage/Popover2'
 import Popover3 from '@/pages/PopoverPage/Popover3'
 import Popover4 from '@/pages/PopoverPage/Popover4'
 import Popover5 from '@/pages/PopoverPage/Popover5'
+import ImageSlide1 from '@/pages/ImageSlidePage/ImageSlide1'
+import ImageSlide2 from '@/pages/ImageSlidePage/ImageSlide2'
+import ImageSlide3 from '@/pages/ImageSlidePage/ImageSlide3'
 
 export const router = createBrowserRouter([
   {
@@ -224,24 +227,36 @@ export const router = createBrowserRouter([
         element: <Modal4 />
       },
       {
-        path: 'popover/1_r',
+        path: '/popover/1_r',
         element: <Popover1 />
       },
       {
-        path: 'popover/2_r',
+        path: '/popover/2_r',
         element: <Popover2 />
       },
       {
-        path: 'popover/3_r',
+        path: '/popover/3_r',
         element: <Popover3 />
       },
       {
-        path: 'popover/4_r',
+        path: '/popover/4_r',
         element: <Popover4 />
       },
       {
-        path: 'popover/5_r',
+        path: '/popover/5_r',
         element: <Popover5 />
+      },
+      {
+        path: '/image-slide/1_r',
+        element: <ImageSlide1 />
+      },
+      {
+        path: '/image-slide/2_r',
+        element: <ImageSlide2 />
+      },
+      {
+        path: '/image-slide/3_r',
+        element: <ImageSlide3 />
       }
     ]
   }
@@ -306,7 +321,11 @@ export const routePaths = [
   '/popover/2_r',
   '/popover/3_r',
   '/popover/4_r',
-  '/popover/5_r'
+  '/popover/5_r',
+  '/image-slide',
+  '/image-slide/1_r',
+  '/image-slide/2_r',
+  '/image-slide/3_r'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -341,7 +360,8 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
       '/scroll-spy',
       '/snack-bar',
       '/modal',
-      '/popover'
+      '/popover',
+      '/image-slide'
     ]
   },
   '/accordion': {
@@ -730,6 +750,30 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     link: '/popover/5_r',
     name: '팝오버 다섯 번째 방법',
     children: Popover4
+  },
+  '/image-slide': {
+    key: '/image-slide',
+    link: '/image-slide/1_r',
+    name: '09. 이미지 슬라이드',
+    children: ['/image-slide/1_r', '/image-slide/2_r', '/image-slide/3_r']
+  },
+  '/image-slide/1_r': {
+    key: '/image-slide/1_r',
+    link: '/image-slide/1_r',
+    name: '이미지 슬라이드 첫 번째 방법',
+    children: ImageSlide1
+  },
+  '/image-slide/2_r': {
+    key: '/image-slide/2_r',
+    link: '/image-slide/2_r',
+    name: '이미지 슬라이드 두 번째 방법',
+    children: ImageSlide2
+  },
+  '/image-slide/3_r': {
+    key: '/image-slide/3_r',
+    link: '/image-slide/3_r',
+    name: '이미지 슬라이드 세 번째 방법',
+    children: ImageSlide3
   }
 }
 

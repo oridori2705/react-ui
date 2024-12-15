@@ -7,4 +7,5 @@ export const SidebarContainer = styled.aside`
   background-color: #aec6f3;
   width: 350px;
   height: 100vh;
+  overflow-y: auto;
 `
