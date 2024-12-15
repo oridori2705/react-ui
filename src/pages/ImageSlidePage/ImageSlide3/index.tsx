@@ -9,6 +9,8 @@ import LazyImageComponent1 from '@/pages/LazyImagePage/LazyImage1/LazyImageCompo
 import data from '../data'
 import Pagination from './Pagination'
 import { ImageSlide3Ul } from '../ImageSlide2/ImageSlide2.styled'
+import UiExplanation from '@/components/UiExplanation'
+import { StyledStrongPositive } from '@/components/UiExplanation/UiExplanation.styled'
 
 type Direction = 'left' | 'right'
 const dataLength = data.length
@@ -94,6 +96,24 @@ const ImageSlide3 = () => {
         visibleCount={7}
         handleMove={moveToIndex}
       />
+      <UiExplanation>
+        <p>
+          -<StyledStrongPositive>페이지네이션 기능을 추가</StyledStrongPositive>
+          했습니다.
+        </p>
+        <p>
+          - 보여질 ViewCount를 props로 받고, 현재 위치가 가운데에 위치하도록
+          하기 위해 1/2 합니다.
+        </p>
+        <p>
+          - 이후 현재 위치에 1/2한 값을 빼서 보여질 ViewCount의 최솟값을
+          구합니다.
+        </p>
+        <p>
+          - 그리고 미리 만들어놓은 indexes배열에 slice()를 이용해 보여질
+          ViewCount들을 렌더링합니다.
+        </p>
+      </UiExplanation>
     </div>
   )
 }

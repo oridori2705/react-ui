@@ -8,6 +8,7 @@ import {
 } from './ImageSlide1.styled'
 import LazyImageComponent1 from '@/pages/LazyImagePage/LazyImage1/LazyImageComponent1'
 import data from '../data'
+import UiExplanation from '@/components/UiExplanation'
 
 type Direction = 'left' | 'right'
 const dataLength = data.length
@@ -21,9 +22,7 @@ const ImageSlide1 = () => {
       if (animatingRef.current) return
 
       setCurrentIndex(prev => {
-        const next =
-          ((direction === 'right' ? prev + 1 : prev - 1) + dataLength) %
-          dataLength
+        const next = (direction === 'right' ? prev + 1 : prev - 1) % dataLength
         animatingRef.current = true
         return next
       })
@@ -60,16 +59,29 @@ const ImageSlide1 = () => {
         <NavLeft onClick={move('left')} />
         <NavRight onClick={move('right')} />
       </ImageSlideContainer>
+      <UiExplanation>
+        <p>
+          - currentIndex로 현재 이미지의 인덱스를 상태로 관리하고, 나머지
+          연산자로 반복 순회가 가능하도록 했습니다.
+        </p>
+        <p>
+          - 예를 들어 20개의 이미지( 0 ~ 19 )에서 20번째에 오고 0번째로 갈 때 19
+          + 1 + data.length로 40이 되고, 이를 40 % data.length 해서 다시 0번째로
+          오게합니다.
+        </p>
+        <p>
+          - 또 예를 들어 0번에서 왼쪽으로 슬라이드하면 20번으로 가야하므로 0 - 1
+          + data.length 로 19가 되고, 이를 19 % data.length로 19번째로 오게
+          합니다.
+        </p>
+        <br />
+
+        <h3>단점</h3>
+        <p>- 모바일 터치로 슬라이드가 되지 않습니다.</p>
+        <p>- 페이지네이션이 구현되지 않았습니다.</p>
+      </UiExplanation>
     </div>
   )
 }
 
 export default ImageSlide1
-
-// 0 <= x <= data.length 로 move하는 경우
-// const next = Math.max(Math.min(direction === "right" ? currentIndex + 1 : currentIndex -1, data.length-1),0)
-// 0이하로 가지 않도록 Math.max에 0이 존재하고
-// currentIndex가 data.length에서 더 커지지 않도록 Math.min으로 막아준 것이다.
-// 위 조건은 0에서 -1로 갈 수 없고, data.length 이상 갈 수 없도록 하는 조건이다.
-
-// 만약 0에서 -1 할 경우 data.length가 되도록 하려면 currentIndex % data.length를 하면된다.
