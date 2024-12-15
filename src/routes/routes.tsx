@@ -52,7 +52,6 @@ import Popover5 from '@/pages/PopoverPage/Popover5'
 import ImageSlide1 from '@/pages/ImageSlidePage/ImageSlide1'
 import ImageSlide2 from '@/pages/ImageSlidePage/ImageSlide2'
 import ImageSlide3 from '@/pages/ImageSlidePage/ImageSlide3'
-import ImageSlide4 from '@/pages/ImageSlidePage/ImageSlide4'
 
 export const router = createBrowserRouter([
   {
@@ -258,10 +257,6 @@ export const router = createBrowserRouter([
       {
         path: '/image-slide/3_r',
         element: <ImageSlide3 />
-      },
-      {
-        path: '/image-slide/4_r',
-        element: <ImageSlide4 />
       }
     ]
   }
@@ -330,8 +325,7 @@ export const routePaths = [
   '/image-slide',
   '/image-slide/1_r',
   '/image-slide/2_r',
-  '/image-slide/3_r',
-  '/image-slide/4_r'
+  '/image-slide/3_r'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -761,12 +755,7 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: '/image-slide',
     link: '/image-slide/1_r',
     name: '09. 이미지 슬라이드',
-    children: [
-      '/image-slide/1_r',
-      '/image-slide/2_r',
-      '/image-slide/3_r',
-      '/image-slide/4_r'
-    ]
+    children: ['/image-slide/1_r', '/image-slide/2_r', '/image-slide/3_r']
   },
   '/image-slide/1_r': {
     key: '/image-slide/1_r',
@@ -785,12 +774,6 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     link: '/image-slide/3_r',
     name: '이미지 슬라이드 세 번째 방법',
     children: ImageSlide3
-  },
-  '/image-slide/4_r': {
-    key: '/image-slide/4_r',
-    link: '/image-slide/4_r',
-    name: '이미지 슬라이드 네 번째 방법',
-    children: ImageSlide1
   }
 }
 
