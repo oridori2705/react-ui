@@ -52,6 +52,8 @@ import Popover5 from '@/pages/PopoverPage/Popover5'
 import ImageSlide1 from '@/pages/ImageSlidePage/ImageSlide1'
 import ImageSlide2 from '@/pages/ImageSlidePage/ImageSlide2'
 import ImageSlide3 from '@/pages/ImageSlidePage/ImageSlide3'
+import Carousel1 from '@/pages/CarouselPage/Carousel1'
+import Carousel2 from '@/pages/CarouselPage/Carousel2'
 
 export const router = createBrowserRouter([
   {
@@ -257,6 +259,14 @@ export const router = createBrowserRouter([
       {
         path: '/image-slide/3_r',
         element: <ImageSlide3 />
+      },
+      {
+        path: '/carousel/1_r',
+        element: <Carousel1 />
+      },
+      {
+        path: '/carousel/2_r',
+        element: <Carousel2 />
       }
     ]
   }
@@ -325,7 +335,10 @@ export const routePaths = [
   '/image-slide',
   '/image-slide/1_r',
   '/image-slide/2_r',
-  '/image-slide/3_r'
+  '/image-slide/3_r',
+  '/carousel',
+  '/carousel/1_r',
+  '/carousel/2_r'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -361,7 +374,8 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
       '/snack-bar',
       '/modal',
       '/popover',
-      '/image-slide'
+      '/image-slide',
+      '/carousel'
     ]
   },
   '/accordion': {
@@ -712,7 +726,7 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
   '/popover': {
     key: '/popover',
     link: '/popover/1_r',
-    name: '09. 팝오버',
+    name: '10. 팝오버',
     children: [
       '/popover/1_r',
       '/popover/2_r',
@@ -754,7 +768,7 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
   '/image-slide': {
     key: '/image-slide',
     link: '/image-slide/1_r',
-    name: '09. 이미지 슬라이드',
+    name: '11. 이미지 슬라이드',
     children: ['/image-slide/1_r', '/image-slide/2_r', '/image-slide/3_r']
   },
   '/image-slide/1_r': {
@@ -774,6 +788,24 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     link: '/image-slide/3_r',
     name: '이미지 슬라이드 세 번째 방법',
     children: ImageSlide3
+  },
+  '/carousel': {
+    key: '/carousel',
+    link: '/carousel/1_r',
+    name: '12. 캐로셀',
+    children: ['/carousel/1_r', '/carousel/2_r']
+  },
+  '/carousel/1_r': {
+    key: '/carousel/1_r',
+    link: '/carousel/1_r',
+    name: '캐로셀 첫 번째 방법',
+    children: Carousel1
+  },
+  '/carousel/2_r': {
+    key: '/carousel/2_r',
+    link: '/carousel/2_r',
+    name: '캐로셀 두 번째 방법',
+    children: Carousel2
   }
 }
 

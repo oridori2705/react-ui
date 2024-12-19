@@ -28,8 +28,8 @@ const Pagination2 = ({
         {pages.map(pageIndex => (
           <div key={pageIndex}>
             <PageButton
-              isCurrent={pageIndex === currentIndex}
-              onClick={() => handleMove(pageIndex)}>
+              isCurrent={pageIndex - 1 === currentIndex}
+              onClick={() => handleMove(pageIndex - 1)}>
               {pageIndex}
             </PageButton>
           </div>
