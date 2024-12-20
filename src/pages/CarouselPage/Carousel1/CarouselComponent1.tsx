@@ -15,22 +15,22 @@ const CarouselComponent1 = ({
   const itemsRef = useRef<(HTMLLIElement | null)[]>([])
 
   const moveTo = useCallback(
-    (nextIndex: number, direction?: Direction) => {
-      const $current = itemsRef.current![currentIndex] as HTMLLIElement
-      const $next = itemsRef.current![nextIndex] as HTMLLIElement
-      if (nextIndex === currentIndex) return
+    (next: number, current: number, direction?: Direction) => {
+      const $current = itemsRef.current![current] as HTMLLIElement
+      const $next = itemsRef.current![next] as HTMLLIElement
+      if (next === current) return
 
-      const dir = direction || (nextIndex > currentIndex ? 'right' : 'left')
+      const dir = direction || (next > current ? 'right' : 'left')
 
       const handleAnimationEnd = () => {
         $current.removeEventListener('animationend', handleAnimationEnd)
-        setCurrentIndex(nextIndex)
+        setCurrentIndex(next)
       }
       $current.addEventListener('animationend', handleAnimationEnd)
       $current.classList.add(`${dir}_current`)
       $next.classList.add(`${dir}_next`)
     },
-    [currentIndex]
+    []
   )
 
   const move = useCallback(
@@ -39,7 +39,7 @@ const CarouselComponent1 = ({
         ((direction === 'right' ? currentIndex + 1 : currentIndex - 1) +
           images.length) %
         images.length
-      moveTo(nextIndex, direction)
+      moveTo(nextIndex, currentIndex, direction)
     },
     [images, currentIndex, moveTo]
   )

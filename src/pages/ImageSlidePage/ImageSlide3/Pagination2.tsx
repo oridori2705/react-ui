@@ -9,7 +9,7 @@ const Pagination2 = ({
   totalPages: number
   currentIndex: number
   visibleCount?: number
-  handleMove: (index: number) => void
+  handleMove: (index: number, current: number) => void
 }) => {
   const pages = Array.from(
     { length: Math.min(visibleCount, totalPages) },
@@ -29,7 +29,7 @@ const Pagination2 = ({
           <div key={pageIndex}>
             <PageButton
               isCurrent={pageIndex - 1 === currentIndex}
-              onClick={() => handleMove(pageIndex - 1)}>
+              onClick={() => handleMove(pageIndex - 1, currentIndex)}>
               {pageIndex}
             </PageButton>
           </div>

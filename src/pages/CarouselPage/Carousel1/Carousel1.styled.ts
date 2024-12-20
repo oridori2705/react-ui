@@ -47,7 +47,7 @@ export const CarouselWrapper = styled.div`
   overflow: hidden;
 `
 
-export const Container = styled.div`
+export const Container = styled.ul`
   position: relative;
   list-style: none;
   padding: 0;
@@ -118,46 +118,6 @@ export const NavButton = styled.button<{ direction: 'left' | 'right' }>`
     `}
 `
 
-export const Carousel2Container = styled(Container)`
-  perspective: 1000px;
-
-  & .item {
-    width: 290px;
-    height: 190px;
-    margin: 5px;
-    transition: transform 1s;
-    opacity: 0.8;
-
-    &:nth-child(9n + 1) {
-      background: #f00;
-    }
-    &:nth-child(9n + 2) {
-      background: #fa0;
-    }
-    &:nth-child(9n + 3) {
-      background: #af0;
-    }
-    &:nth-child(9n + 4) {
-      background: #0f0;
-    }
-    &:nth-child(9n + 5) {
-      background: #0fa;
-    }
-    &:nth-child(9n + 6) {
-      background: #0af;
-    }
-    &:nth-child(9n + 7) {
-      background: #00f;
-    }
-    &:nth-child(9n + 8) {
-      background: #a0f;
-    }
-    &:nth-child(9n + 0) {
-      background: #f0a;
-    }
-  }
-`
-
 export const Item = styled.li<{
   current: boolean
 }>`
@@ -168,7 +128,6 @@ export const Item = styled.li<{
   left: 0;
   transform: ${({ current }) =>
     current ? `translateX(0)` : `translateX(-200%)`};
-  transform-style: preserve-3d;
   transition: transform 0.3s;
 
   img {
