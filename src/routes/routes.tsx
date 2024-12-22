@@ -54,6 +54,7 @@ import ImageSlide2 from '@/pages/ImageSlidePage/ImageSlide2'
 import ImageSlide3 from '@/pages/ImageSlidePage/ImageSlide3'
 import Carousel1 from '@/pages/CarouselPage/Carousel1'
 import Carousel2 from '@/pages/CarouselPage/Carousel2'
+import Carousel3 from '@/pages/CarouselPage/Carousel3/indext'
 
 export const router = createBrowserRouter([
   {
@@ -267,6 +268,10 @@ export const router = createBrowserRouter([
       {
         path: '/carousel/2_r',
         element: <Carousel2 />
+      },
+      {
+        path: '/carousel/3_r',
+        element: <Carousel3 />
       }
     ]
   }
@@ -338,7 +343,8 @@ export const routePaths = [
   '/image-slide/3_r',
   '/carousel',
   '/carousel/1_r',
-  '/carousel/2_r'
+  '/carousel/2_r',
+  '/carousel/3_r'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -793,7 +799,7 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: '/carousel',
     link: '/carousel/1_r',
     name: '12. 캐로셀',
-    children: ['/carousel/1_r', '/carousel/2_r']
+    children: ['/carousel/1_r', '/carousel/2_r', '/carousel/3_r']
   },
   '/carousel/1_r': {
     key: '/carousel/1_r',
@@ -805,6 +811,12 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: '/carousel/2_r',
     link: '/carousel/2_r',
     name: '캐로셀 두 번째 방법',
+    children: Carousel2
+  },
+  '/carousel/3_r': {
+    key: '/carousel/3_r',
+    link: '/carousel/3_r',
+    name: '캐로셀 세 번째 방법',
     children: Carousel2
   }
 }

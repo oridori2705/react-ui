@@ -62,11 +62,11 @@ export const NavButton = styled.button<{ direction: 'left' | 'right' }>`
   margin-top: -20px;
   width: 40px;
   height: 40px;
-  background-color: #333;
+  background-color: blue;
   border-radius: 50%;
   border: 0;
   outline: 0;
-  opacity: 0.3;
+  opacity: 0.5;
   cursor: pointer;
 
   &:hover {
@@ -83,6 +83,10 @@ export const NavButton = styled.button<{ direction: 'left' | 'right' }>`
     top: 5px;
     background-color: #fff;
     transform-origin: 3px 14px;
+  }
+
+  &:disabled {
+    background-color: red;
   }
 
   ${({ direction }) =>

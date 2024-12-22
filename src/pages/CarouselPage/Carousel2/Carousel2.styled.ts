@@ -29,8 +29,6 @@ export const NavButton = styled.button<{ direction: 'left' | 'right' }>`
   height: 40px;
   background-color: #333;
   border-radius: 50%;
-  border: 0;
-  outline: 0;
   opacity: 0.3;
   cursor: pointer;
 
@@ -89,7 +87,6 @@ export const Item = styled.li<{ current: boolean }>`
   left: 0;
   width: 600px;
   height: 320px;
-
   margin: 5px;
   padding: 0;
   transform-style: preserve-3d;
