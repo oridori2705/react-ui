@@ -55,6 +55,7 @@ import ImageSlide3 from '@/pages/ImageSlidePage/ImageSlide3'
 import Carousel1 from '@/pages/CarouselPage/Carousel1'
 import Carousel2 from '@/pages/CarouselPage/Carousel2'
 import Carousel3 from '@/pages/CarouselPage/Carousel3/indext'
+import ImageSlide4 from '@/pages/ImageSlidePage/ImageSlide4/indext'
 
 export const router = createBrowserRouter([
   {
@@ -262,16 +263,16 @@ export const router = createBrowserRouter([
         element: <ImageSlide3 />
       },
       {
+        path: '/image-slide/4_r',
+        element: <ImageSlide4 />
+      },
+      {
         path: '/carousel/1_r',
         element: <Carousel1 />
       },
       {
         path: '/carousel/2_r',
         element: <Carousel2 />
-      },
-      {
-        path: '/carousel/3_r',
-        element: <Carousel3 />
       }
     ]
   }
@@ -344,7 +345,7 @@ export const routePaths = [
   '/carousel',
   '/carousel/1_r',
   '/carousel/2_r',
-  '/carousel/3_r'
+  '/image-slide/4_r'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -775,7 +776,12 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: '/image-slide',
     link: '/image-slide/1_r',
     name: '11. 이미지 슬라이드',
-    children: ['/image-slide/1_r', '/image-slide/2_r', '/image-slide/3_r']
+    children: [
+      '/image-slide/1_r',
+      '/image-slide/2_r',
+      '/image-slide/3_r',
+      '/image-slide/4_r'
+    ]
   },
   '/image-slide/1_r': {
     key: '/image-slide/1_r',
@@ -795,11 +801,18 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     name: '이미지 슬라이드 세 번째 방법',
     children: ImageSlide3
   },
+
+  '/image-slide/4_r': {
+    key: '/image-slide/4_r',
+    link: '/image-slide/4_r',
+    name: '이미지 슬라이드 네 번째 방법',
+    children: ImageSlide4
+  },
   '/carousel': {
     key: '/carousel',
     link: '/carousel/1_r',
     name: '12. 캐로셀',
-    children: ['/carousel/1_r', '/carousel/2_r', '/carousel/3_r']
+    children: ['/carousel/1_r', '/carousel/2_r']
   },
   '/carousel/1_r': {
     key: '/carousel/1_r',
@@ -811,12 +824,6 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: '/carousel/2_r',
     link: '/carousel/2_r',
     name: '캐로셀 두 번째 방법',
-    children: Carousel2
-  },
-  '/carousel/3_r': {
-    key: '/carousel/3_r',
-    link: '/carousel/3_r',
-    name: '캐로셀 세 번째 방법',
     children: Carousel2
   }
 }

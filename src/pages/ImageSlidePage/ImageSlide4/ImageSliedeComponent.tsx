@@ -7,8 +7,8 @@ import {
   useRef
 } from 'react'
 import useDragScroll from './useDragScroll'
-import { NavButton } from '../Carousel1/Carousel1.styled'
 import styled from '@emotion/styled'
+import { NavButton } from '@/pages/CarouselPage/Carousel2/Carousel2.styled'
 
 interface CarouselProps extends ComponentProps<'div'> {
   children: ReactNode
@@ -18,7 +18,7 @@ interface CarouselProps extends ComponentProps<'div'> {
   groupGap?: number
 }
 
-const CarouselComponent3 = ({
+const ImageSlideComponent = ({
   children,
   itemsToShow = 4,
   childSize = 100,
@@ -30,7 +30,7 @@ const CarouselComponent3 = ({
   const itemToShowWidth = itemsToShow * (childSize + groupGap) + childSize / 2
   const totalCarousels = Children.count(children)
 
-  const avatars = Children.toArray(children).map((child: ReactNode) => {
+  const childrenData = Children.toArray(children).map((child: ReactNode) => {
     if (isValidElement(child)) {
       return cloneElement(child as JSX.Element, {
         style: { width: `${childSize}px`, scrollSnapAlign: 'start' },
@@ -70,7 +70,7 @@ const CarouselComponent3 = ({
         onTouchMove={handleMouseMove}
         onTouchEnd={handleMouseUp}
         onMouseLeave={handleMouseUp}>
-        <ItemContainer groupGap={groupGap}>{avatars}</ItemContainer>
+        <ItemContainer groupGap={groupGap}>{childrenData}</ItemContainer>
       </Container>
 
       {useButton && (
@@ -93,7 +93,7 @@ const CarouselComponent3 = ({
   )
 }
 
-export default CarouselComponent3
+export default ImageSlideComponent
 
 export const Wrapper = styled.div`
   position: relative;

@@ -1,11 +1,11 @@
 import UiExplanation from '@/components/UiExplanation'
 import data from '../data'
-import CarouselComponent3 from './CarouselComponent3'
+import ImageSlideComponent from './ImageSliedeComponent'
 
-const Carousel3 = () => {
+const ImageSlide4 = () => {
   return (
     <div>
-      <CarouselComponent3
+      <ImageSlideComponent
         childSize={500}
         groupGap={15}
         useButton>
@@ -17,7 +17,7 @@ const Carousel3 = () => {
             height="320"
           />
         ))}
-      </CarouselComponent3>
+      </ImageSlideComponent>
       <UiExplanation>
         <p>
           - ChildrenNode에 접근해서 scroll-snap-align 속성, 크기 등을 강제로
@@ -27,14 +27,10 @@ const Carousel3 = () => {
         <p>- 터치 슬라이드가 가능합니다.</p>
         <br />
         <h3>단점</h3>
-        <p>
-          - Carousel은 계속해서 회전해야하는데 현재는 하나의 리스트만
-          나열됩니다.
-        </p>
-        <p>- 이후 방식에서 이어 붙이는 방식을 이용해 개선해보려고 합니다.</p>
+        <p>- 터치 슬라이드의 작동 방식이 복잡합니다.</p>
       </UiExplanation>
     </div>
   )
 }
 
-export default Carousel3
+export default ImageSlide4
