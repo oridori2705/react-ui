@@ -28,11 +28,17 @@ const ImageSlide2 = () => {
           direction === 'right'
             ? scrollPosition + imageWidth
             : scrollPosition - imageWidth
-
-        container.scrollTo({
-          left: nextScrollPosition,
-          behavior: 'smooth'
-        })
+        if (nextScrollPosition > imageWidth * data.length) {
+          container.scrollTo({
+            left: 0,
+            behavior: 'smooth'
+          })
+        } else {
+          container.scrollTo({
+            left: nextScrollPosition,
+            behavior: 'smooth'
+          })
+        }
       }
     },
     []
@@ -81,6 +87,10 @@ const ImageSlide2 = () => {
         <p>
           - 아이템마다 <StyledCode>scroll-snap-align : start</StyledCode> 속성이
           적용되어있습니다.
+        </p>
+        <p>
+          - 이미지 너비가 미리 주어져야합니다.(이동되어야할 left 값이 상수로
+          있어야 함)
         </p>
         <br />
 

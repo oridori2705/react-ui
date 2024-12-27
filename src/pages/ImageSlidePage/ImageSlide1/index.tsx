@@ -76,6 +76,7 @@ const ImageSlide1 = () => {
           + data.length 로 19가 되고, 이를 19 % data.length로 19번째로 오게
           합니다.
         </p>
+        <p>- 이미지 너비가 미리 주어져야합니다.(이동되어야할 left 값이 상수로 있어야 함)</p>
         <br />
 
         <h3>단점</h3>

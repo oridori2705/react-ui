@@ -32,7 +32,11 @@ const HorizontalScrollBox1 = () => {
   const ref = useRef()
   return (
     <>
-      <h3>#1. React</h3>
+      <h3>
+        #1. 횡 스크롤 박스
+        <sub> IntersectionObserver + scroll</sub>
+      </h3>
+
       <ForwardedScrollBox
         list={data}
         Item={Item}

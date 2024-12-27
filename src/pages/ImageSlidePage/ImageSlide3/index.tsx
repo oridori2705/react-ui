@@ -87,15 +87,15 @@ const ImageSlide3 = () => {
             </ImageItem>
           ))}
         </ImageSlide3Ul>
+        <Pagination
+          totalPages={dataLength}
+          currentIndex={currentIndex}
+          visibleCount={7}
+          handleMove={moveToIndex}
+        />
         <NavLeft onClick={move('left')} />
         <NavRight onClick={move('right')} />
       </ImageSlideContainer>
-      <Pagination
-        totalPages={dataLength}
-        currentIndex={currentIndex}
-        visibleCount={7}
-        handleMove={moveToIndex}
-      />
       <UiExplanation>
         <p>
           -<StyledStrongPositive>페이지네이션 기능을 추가</StyledStrongPositive>
@@ -112,6 +112,10 @@ const ImageSlide3 = () => {
         <p>
           - 그리고 미리 만들어놓은 indexes배열에 slice()를 이용해 보여질
           ViewCount들을 렌더링합니다.
+        </p>
+        <p>
+          - 이미지 너비가 미리 주어져야합니다.(이동되어야할 left 값이 상수로
+          있어야 함)
         </p>
       </UiExplanation>
     </div>

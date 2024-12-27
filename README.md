@@ -60,6 +60,7 @@
 - Modal
 - Popover
 - Image Slide
+- Carousel
 
 ## 🔗관련 링크
 
@@ -72,3 +73,4 @@
 - [Modal을 구현하는 방법](https://ydoag2003.tistory.com/517)
 - [팝오버를 구현하면서](https://ydoag2003.tistory.com/518)
 - [이미지 슬라이드를 구현하면서](https://ydoag2003.tistory.com/520)
+- [Carousel을 구현하면서](https://ydoag2003.tistory.com/521)

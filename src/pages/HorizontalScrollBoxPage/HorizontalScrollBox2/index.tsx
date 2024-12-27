@@ -11,7 +11,10 @@ import {
 const HorizontalScrollBox2 = () => {
   return (
     <>
-      <h3>#2. React/합성 컴포넌트 패턴</h3>
+      <h3>
+        #2. 횡 스크롤 박스
+        <sub> IntersectionObserver + scroll + 합성컴포넌트 패턴</sub>
+      </h3>
 
       <ScrollBox isSetScrollBar={false}>
         {data.map((item, index) => (
