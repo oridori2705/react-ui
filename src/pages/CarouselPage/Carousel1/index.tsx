@@ -6,6 +6,10 @@ import { StyledStrong } from '@/components/UiExplanation/UiExplanation.styled'
 const Carousel1 = () => {
   return (
     <div>
+      <h3>
+        #1. Carousel
+        <sub> currentIndex + 하나의 요소만 보이는 상태 + 애니메이션</sub>
+      </h3>
       <CarouselComponent1 images={data} />
       <UiExplanation>
         <p>

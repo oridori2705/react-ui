@@ -5,6 +5,10 @@ import CarouselComponent2 from './CarouselComponent2'
 const Carousel2 = () => {
   return (
     <div>
+      <h3>
+        #2. Carousel
+        <sub> currentIndex + 3D 스타일</sub>
+      </h3>
       <CarouselComponent2 images={data}></CarouselComponent2>
       <UiExplanation>
         <p>
