@@ -8,7 +8,7 @@ import {
 } from 'react'
 import useDragScroll from './useDragScroll'
 import styled from '@emotion/styled'
-import { NavButton } from '@/pages/CarouselPage/Carousel2/Carousel2.styled'
+import { css } from '@emotion/react'
 
 interface CarouselProps extends ComponentProps<'div'> {
   children: ReactNode
@@ -123,4 +123,70 @@ export const ItemContainer = styled.div<{ groupGap: number }>`
   justify-content: center;
   flex-wrap: nowrap;
   gap: ${({ groupGap }) => `${groupGap}px`};
+`
+
+const NavButton = styled.button<{ direction: 'left' | 'right' }>`
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  width: 40px;
+  height: 40px;
+  background-color: blue;
+  border-radius: 50%;
+  border: 0;
+  outline: 0;
+  opacity: 0.5;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 6px;
+    height: 17px;
+    top: 5px;
+    background-color: #fff;
+    transform-origin: 3px 14px;
+  }
+
+  &:disabled {
+    background-color: red;
+  }
+
+  ${({ direction }) =>
+    direction === 'left' &&
+    css`
+      left: 10px;
+
+      &::before {
+        left: 11px;
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        left: 11px;
+        transform: rotate(135deg);
+      }
+    `}
+
+  ${({ direction }) =>
+    direction === 'right' &&
+    css`
+      right: 10px;
+
+      &::before {
+        right: 11px;
+        transform: rotate(-45deg);
+      }
+
+      &::after {
+        right: 11px;
+        transform: rotate(-135deg);
+      }
+    `}
 `

@@ -87,15 +87,15 @@ const ImageSlide3 = () => {
             </ImageItem>
           ))}
         </ImageSlide3Ul>
+        <Pagination
+          totalPages={dataLength}
+          currentIndex={currentIndex}
+          visibleCount={7}
+          handleMove={moveToIndex}
+        />
         <NavLeft onClick={move('left')} />
         <NavRight onClick={move('right')} />
       </ImageSlideContainer>
-      <Pagination
-        totalPages={dataLength}
-        currentIndex={currentIndex}
-        visibleCount={7}
-        handleMove={moveToIndex}
-      />
       <UiExplanation>
         <p>
           -<StyledStrongPositive>페이지네이션 기능을 추가</StyledStrongPositive>
