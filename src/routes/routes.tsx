@@ -54,8 +54,7 @@ import ImageSlide2 from '@/pages/ImageSlidePage/ImageSlide2'
 import ImageSlide3 from '@/pages/ImageSlidePage/ImageSlide3'
 import Carousel1 from '@/pages/CarouselPage/Carousel1'
 import Carousel2 from '@/pages/CarouselPage/Carousel2'
-import Carousel3 from '@/pages/CarouselPage/Carousel3/indext'
-import ImageSlide4 from '@/pages/ImageSlidePage/ImageSlide4/indext'
+import ImageSlide4 from '@/pages/ImageSlidePage/ImageSlide4'
 
 export const router = createBrowserRouter([
   {
