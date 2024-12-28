@@ -65,14 +65,6 @@ export const ModalContent = styled.div<ModalContentProps>`
   flex-direction: column;
   overflow: hidden;
   position: absolute;
-  box-sizing: border-box;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid #242424;
-  border-radius: 6px;
-  background-color: #fff;
-  max-height: calc(100vh - 80px);
-  max-width: calc(100vw - 80px);
-  min-width: 70%;
 
   overflow-y: auto;
   -ms-overflow-style: auto;

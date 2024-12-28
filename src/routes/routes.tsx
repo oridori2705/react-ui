@@ -55,6 +55,7 @@ import ImageSlide3 from '@/pages/ImageSlidePage/ImageSlide3'
 import Carousel1 from '@/pages/CarouselPage/Carousel1'
 import Carousel2 from '@/pages/CarouselPage/Carousel2'
 import ImageSlide4 from '@/pages/ImageSlidePage/ImageSlide4'
+import GalleryPage from '@/pages/GalleryPage'
 
 export const router = createBrowserRouter([
   {
@@ -272,6 +273,10 @@ export const router = createBrowserRouter([
       {
         path: '/carousel/2_r',
         element: <Carousel2 />
+      },
+      {
+        path: '/gallery',
+        element: <GalleryPage />
       }
     ]
   }
@@ -344,7 +349,8 @@ export const routePaths = [
   '/carousel',
   '/carousel/1_r',
   '/carousel/2_r',
-  '/image-slide/4_r'
+  '/image-slide/4_r',
+  '/gallery'
 ] as const
 export type ROUTE_PATH = (typeof routePaths)[number]
 
@@ -381,7 +387,8 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
       '/modal',
       '/popover',
       '/image-slide',
-      '/carousel'
+      '/carousel',
+      '/gallery'
     ]
   },
   '/accordion': {
@@ -824,6 +831,12 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     link: '/carousel/2_r',
     name: '캐로셀 두 번째 방법',
     children: Carousel2
+  },
+  '/gallery': {
+    key: '/gallery',
+    link: '/gallery',
+    name: '13. 갤러리',
+    children: GalleryPage
   }
 }
 

@@ -1,4 +1,14 @@
-import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
+import {
+  ForwardedRef,
+  forwardRef,
+  ReactNode,
+  Ref,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState
+} from 'react'
 import { Wrapper } from './DefaultComponent'
 import useIntersectionObserver from '../../../hooks/useIntersectionObserver'
 import {
@@ -10,18 +20,21 @@ import {
   UlContainer
 } from '../HorizontalScrollBox1/HorizontalScrollBox.styled'
 import { ScrollBoxContext } from './ScrollBoxContext'
+import { ScrollBoxHandle } from '../HorizontalScrollBox1/ScrollBoxComponent'
 
 type Direction = 'prev' | 'next'
 export type ItemElemType = HTMLLIElement | null
 const DefaultButtonState = { prev: true, next: true }
 
-const ScrollBoxComponent = ({
-  isSetScrollBar,
-  children
-}: {
+interface ScrollBoxComponentProps {
   isSetScrollBar?: boolean
   children: ReactNode
-}) => {
+}
+
+const ScrollBoxComponent = (
+  { isSetScrollBar, children }: ScrollBoxComponentProps,
+  ref?: ForwardedRef<unknown>
+) => {
   const [buttonEnabled, setButtonEnabled] = useState<{
     prev: boolean
     next: boolean
@@ -30,6 +43,25 @@ const ScrollBoxComponent = ({
   const itemsRef = useRef<ItemElemType[]>([])
   const watcherRef = useRef<ItemElemType[]>([])
   const { entries: watcherEntries } = useIntersectionObserver(watcherRef)
+
+  const scrollFocus = useCallback(
+    (index: number, behavior: 'instant' | 'smooth' = 'instant') => {
+      itemsRef.current[index]?.scrollIntoView({
+        block: 'nearest',
+        inline: 'center',
+        behavior
+      })
+    },
+    []
+  )
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      scrollFocus
+    }),
+    [scrollFocus]
+  )
 
   const registerItem = useCallback((index: number, element: ItemElemType) => {
     itemsRef.current[index] = element
@@ -104,7 +136,11 @@ const ScrollBoxComponent = ({
   )
 }
 
-const ScrollBox = Object.assign(ScrollBoxComponent, {
+const ForwardedScrollBox = forwardRef(ScrollBoxComponent) as (
+  props: ScrollBoxComponentProps & { ref?: Ref<ScrollBoxHandle> }
+) => JSX.Element
+
+const ScrollBox = Object.assign(ForwardedScrollBox, {
   Wrapper
 })
 export default ScrollBox

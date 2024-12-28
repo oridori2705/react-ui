@@ -3,6 +3,7 @@ import useModal from './useModal'
 import Modal from './Modal'
 import { PlaceHolderDiv } from '../Modal1'
 import UiExplanation from '@/components/UiExplanation'
+import styled from '@emotion/styled'
 
 const Modal3 = () => {
   return (
@@ -51,6 +52,14 @@ const Modal3 = () => {
           - ex.모달이 닫히면서 useState의 상태가 변화하면 애니메이션이
           동작하지않습니다.
         </p>
+        <p>
+          - Modal.Header나 내부 취소 버튼 같은 경우 close() 메서드로 Modal이
+          닫히기 때문에 애니메이션이 동작하지 않습니다.
+        </p>
+        <p>
+          - setIsAnimating으로 상태가 변화되어야 애니메이션이 동작하고 Modal이
+          사라집니다.
+        </p>
       </UiExplanation>
       <PlaceHolderDiv />
     </div>
@@ -78,22 +87,34 @@ export const ConfirmModal = ({
     <Modal
       isOpen={isOpen}
       close={close}>
-      <Modal.Header
-        title={'ConfirmModal'}
-        hide={close}
-      />
-      <Modal.Content>{children}</Modal.Content>
-      <p>
-        현재 확인 유무:
-        {confirmed ? '✅' : '❌'}
-      </p>
-      <Modal.Footer>
-        <button onClick={onConfirm}>확인</button>
-        <button onClick={onCancel}>취소</button>
-      </Modal.Footer>
+      <ModalContentStyled>
+        <Modal.Header
+          title={'ConfirmModal'}
+          hide={close}
+        />
+        <Modal.Content>{children}</Modal.Content>
+        <p>
+          현재 확인 유무:
+          {confirmed ? '✅' : '❌'}
+        </p>
+        <Modal.Footer>
+          <button onClick={onConfirm}>확인</button>
+          <button onClick={onCancel}>취소</button>
+        </Modal.Footer>
+      </ModalContentStyled>
     </Modal>
   )
 }
+
+const ModalContentStyled = styled.div`
+  box-sizing: border-box;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #242424;
+  border-radius: 6px;
+  background-color: #fff;
+  height: calc(100vh - 500px);
+  width: calc(100vw - 500px);
+`
 
 const ConfirmTrigger = ({ children }: { children: ReactNode }) => {
   const { open, close, isOpen } = useModal()
