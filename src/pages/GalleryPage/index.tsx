@@ -88,7 +88,7 @@ const GalleryModal = ({
         <Modal.Content>
           <ModalContent>
             <ModalContentMainView>
-              <img
+              <LazyImageComponent3
                 src={fullSizeImageUrl}
                 width={600}
                 height={320}

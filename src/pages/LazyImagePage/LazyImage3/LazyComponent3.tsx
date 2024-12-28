@@ -11,7 +11,8 @@ const LazyImageComponent3 = ({
   src,
   width = 600,
   height = 320,
-  alt = '이미지'
+  alt = '이미지',
+  ...props
 }: LazyImageComponentProps) => {
   const imgRef = useRef<HTMLImageElement>(null)
   const [loaded, setLoaded] = useState(false)
@@ -47,6 +48,7 @@ const LazyImageComponent3 = ({
       height={height}
       onLoad={onLoad}
       alt={alt}
+      {...props}
     />
   )
 }
