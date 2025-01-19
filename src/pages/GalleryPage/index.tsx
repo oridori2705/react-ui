@@ -59,7 +59,7 @@ const GalleryModal = ({
     closeModal()
   }
 
-  const handleItemClick = (item: unknown, index: number) => () => {
+  const handleItemClick = (_item: unknown, index: number) => () => {
     setCurrentIndex(index)
     setZoom(1)
     scrollBoxRef.current!.scrollFocus(index, 'smooth')
