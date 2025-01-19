@@ -84,6 +84,7 @@ export const CloseButton = styled.button`
 
 export const ModalContentContainer = styled.div`
   padding: 20px;
+  height: 100%;
 `
 
 export const ModalFooterContainer = styled.div`

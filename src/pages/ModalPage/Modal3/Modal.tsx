@@ -59,7 +59,7 @@ const Modal = ({ isOpen, close, children }: ModalProps) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        close()
+        setIsAnimating(false)
       }
     }
 
@@ -67,7 +67,7 @@ const Modal = ({ isOpen, close, children }: ModalProps) => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
     }
-  }, [close])
+  }, [])
 
   return isOpen
     ? createPortal(
